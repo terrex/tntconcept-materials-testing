@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/tntconcept/" />
+<title>EnsayoBean</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">EnsayoBean</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/tntconcept/pages/contacts/ensayos.jsf</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a &gt; img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>runScriptAndWait</td>
+	<td>document.forms[0].elements[2].value=_cmItemList[17][2];document.forms[0].submit();</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Buscar Ensayos</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@title='Ejecutar']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Coste</td>
+	<td></td>
+</tr>
+<!--Listado OK-->
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@title='Nuevo']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=ensayo:name</td>
+	<td>Nombre ensayo 8837</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=ensayo:nameIngles</td>
+	<td>test name 8837</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=ensayo:description</td>
+	<td>la description</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=ensayo:cost</td>
+	<td>44.3</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img.cmdImg</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=ensayo:procedimientos:0:procedimiento</td>
+	<td>IRUF35</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@title='Guardar']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@title='Volver']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>8837</td>
+	<td></td>
+</tr>
+<!--Crear ensayo OK-->
+<tr>
+	<td>clickAndWait</td>
+	<td>id=ensayos:list:2:_idJsp44</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=ensayo:name</td>
+	<td>Nombre ensayo 8837_edit</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//img[@title='Guardar']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Por favor, confirme la operación de actualización.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@title='Volver']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>8837_edit</td>
+	<td></td>
+</tr>
+<!--Editar ensayo OK-->
+<tr>
+	<td>clickAndWait</td>
+	<td>id=ensayos:list:2:_idJsp44</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//img[@title='Eliminar']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Por favor, confirme la operación de borrado.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>8837_edit</td>
+	<td></td>
+</tr>
+<!--Borrar ensayo OK-->
+</tbody></table>
+</body>
+</html>

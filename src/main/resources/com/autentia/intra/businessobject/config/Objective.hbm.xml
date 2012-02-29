@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.Objective" table="Objective">
+        <id name="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="state" not-null="true">
+            <type name="com.autentia.intra.util.GenericEnumUserType">
+                <param name="enumClassName">com.autentia.intra.businessobject.ObjectiveState</param>
+            </type>
+        </property>
+        <property name="name" type="java.lang.String"/>
+        <property name="log" type="java.lang.String"/>
+        <property name="startDate" not-null="true" type="java.util.Date"/>
+        <property name="endDate" type="java.util.Date"/>
+        <many-to-one name="user" class="com.autentia.intra.businessobject.User" column="userId" not-null="true"/>
+        <many-to-one name="project" class="com.autentia.intra.businessobject.Project" column="projectId" not-null="true"
+                />
+
+        <property name="departmentId" type="java.lang.Integer" column="departmentId"/>
+        <property name="insertDate" type="java.util.Date" column="insertDate"/>
+        <property name="updateDate" type="java.util.Date" column="updateDate"/>
+        <property name="updatedById" type="java.lang.Integer"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+        name="Informe.de.variacion.anual.de.tesoreria"
+        columnCount="1"
+        printOrder="Vertical"
+        orientation="Landscape"
+        pageWidth="842"
+        pageHeight="595"
+        columnWidth="782"
+        columnSpacing="0"
+        leftMargin="30"
+        rightMargin="30"
+        topMargin="20"
+        bottomMargin="20"
+        whenNoDataType="AllSectionsNoDetail"
+        isTitleNewPage="false"
+        isSummaryNewPage="false">
+    <property name="ireport.scriptlethandling" value="0"/>
+    <property name="ireport.encoding" value="UTF-8"/>
+    <import value="java.util.*"/>
+    <import value="net.sf.jasperreports.engine.*"/>
+    <import value="net.sf.jasperreports.engine.data.*"/>
+    <import value="com.autentia.intra.util.ConfigurationUtil"/>
+    <parameter name="descripcion" isForPrompting="true" class="java.lang.String">
+        <parameterDescription><![CDATA[description]]></parameterDescription>
+        <defaultValueExpression>
+            <![CDATA["Este informe muestra la variación de necesidades operativas de fondos (NOF) del año actual."]]></defaultValueExpression>
+    </parameter>
+    <parameter name="idOrg" isForPrompting="true" class="java.lang.Integer">
+        <parameterDescription><![CDATA[Hidden]]></parameterDescription>
+        <defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+    </parameter>
+    <parameter name="SUBREPORT_HEADER" isForPrompting="true" class="java.lang.String">
+        <parameterDescription><![CDATA[Subreport]]></parameterDescription>
+        <defaultValueExpression><![CDATA["ourOrganizationNameCenter_subreport"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="SUBREPORT_FOOTER" isForPrompting="true" class="java.lang.String">
+        <parameterDescription><![CDATA[Subreport]]></parameterDescription>
+        <defaultValueExpression><![CDATA["ourOrganization_subreport"]]></defaultValueExpression>
+    </parameter>
+    <queryString><![CDATA[SELECT week(entryDate) as 'semana',sum(amount) as 'cantidad'
+FROM AccountEntry a
+where entryDate between '2007-01-01' and CURRENT_DATE()
+group by semana]]></queryString>
+
+    <field name="semana" class="java.lang.Long"/>
+    <field name="cantidad" class="java.math.BigDecimal"/>
+
+    <variable name="sumaTotal" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
+        <variableExpression><![CDATA[$F{cantidad}]]></variableExpression>
+    </variable>
+    <background>
+        <band height="0" isSplitAllowed="true">
+        </band>
+    </background>
+    <title>
+        <band height="70" isSplitAllowed="true">
+            <image scaleImage="FillFrame" onErrorType="Blank" evaluationTime="Now" hyperlinkType="None"
+                   hyperlinkTarget="Self">
+                <reportElement
+                        x="616"
+                        y="13"
+                        width="156"
+                        height="55"
+                        key="image-1"/>
+                <box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000"
+                     rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+                <graphicElement stretchType="NoStretch"/>
+                <imageExpression class="java.io.InputStream">
+                    <![CDATA[ConfigurationUtil.getDefault().getLogoAsStream()]]></imageExpression>
+            </image>
+            <line direction="TopDown">
+                <reportElement
+                        x="11"
+                        y="50"
+                        width="600"
+                        height="0"
+                        key="line-6"/>
+                <graphicElement stretchType="NoStretch"/>
+            </line>
+            <staticText>
+                <reportElement
+                        x="0"
+                        y="52"
+                        width="614"
+                        height="15"
+                        key="staticText-4"/>
+                <box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000"
+                     rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" pdfFontName="ariali.ttf" size="10" isBold="false" isItalic="true" isUnderline="false" isPdfEmbedded="true" isStrikeThrough="false" />
+                </textElement>
+                <text>
+                    <![CDATA[Este informe muestra la variación de las necesidades operativas de fondos del año en curso (NOF)]]></text>
+            </staticText>
+            <staticText>
+                <reportElement
+                        x="5"
+                        y="30"
+                        width="609"
+                        height="20"
+                        key="staticText-23"/>
+                <box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000"
+                     rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" pdfFontName="arial.ttf" size="14" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded="true" isStrikeThrough="false" />
+                </textElement>
+                <text><![CDATA[Informe de variación anual de tesorería]]></text>
+            </staticText>
+            <subreport isUsingCache="true">
+                <reportElement
+                        x="323"
+                        y="0"
+                        width="137"
+                        height="12"
+                        key="subreport-1"/>
+                <subreportParameter name="idOrg">
+                    <subreportParameterExpression><![CDATA[$P{idOrg}]]></subreportParameterExpression>
+                </subreportParameter>
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_HEADER}]]></subreportExpression>
+            </subreport>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="0" isSplitAllowed="true">
+        </band>
+    </pageHeader>
+    <columnHeader>
+        <band height="0" isSplitAllowed="true">
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="3" isSplitAllowed="true">
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="2" isSplitAllowed="true">
+        </band>
+    </columnFooter>
+    <pageFooter>
+        <band height="50" isSplitAllowed="true">
+            <line direction="TopDown">
+                <reportElement
+                        x="12"
+                        y="25"
+                        width="760"
+                        height="0"
+                        key="line-5"/>
+                <graphicElement stretchType="NoStretch" pen="1Point"/>
+            </line>
+            <textField isStretchWithOverflow="false" pattern="EEEEE dd MMMMM yyyy" isBlankWhenNull="false"
+                       evaluationTime="Report" hyperlinkType="None" hyperlinkTarget="Self">
+                <reportElement
+                        x="15"
+                        y="28"
+                        width="250"
+                        height="18"
+                        key="textField-4"/>
+                <box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000"
+                     rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+                <textElement>
+                    <font fontName="Arial" pdfFontName="arial.ttf" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded="true" isStrikeThrough="false" />
+                </textElement>
+                <textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"
+                       hyperlinkTarget="Self">
+                <reportElement
+                        x="658"
+                        y="29"
+                        width="100"
+                        height="18"
+                        key="textField-5"/>
+                <box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000"
+                     rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+                <textElement textAlignment="Right">
+                    <font fontName="Arial" pdfFontName="arial.ttf" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded="true" isStrikeThrough="false" />
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA["Página " + $V{PAGE_NUMBER} + " de "]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Report"
+                       hyperlinkType="None" hyperlinkTarget="Self">
+                <reportElement
+                        x="760"
+                        y="29"
+                        width="20"
+                        height="18"
+                        key="textField-6"/>
+                <box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000"
+                     rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+                <textElement>
+                    <font fontName="Arial" pdfFontName="arial.ttf" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded="true" isStrikeThrough="false" />
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA["" + $V{PAGE_NUMBER} + ""]]></textFieldExpression>
+            </textField>
+            <subreport isUsingCache="true">
+                <reportElement
+                        x="126"
+                        y="13"
+                        width="531"
+                        height="16"
+                        key="subreport-3"/>
+                <subreportParameter name="idOrg">
+                    <subreportParameterExpression><![CDATA[$P{idOrg}]]></subreportParameterExpression>
+                </subreportParameter>
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_FOOTER}]]></subreportExpression>
+            </subreport>
+        </band>
+    </pageFooter>
+    <lastPageFooter>
+        <band height="50" isSplitAllowed="true">
+            <textField isStretchWithOverflow="false" pattern="EEEEE dd MMMMM yyyy" isBlankWhenNull="false"
+                       evaluationTime="Report" hyperlinkType="None" hyperlinkTarget="Self">
+                <reportElement
+                        x="13"
+                        y="28"
+                        width="250"
+                        height="18"
+                        key="textField-1"/>
+                <box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000"
+                     rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+                <textElement>
+                    <font fontName="Arial" pdfFontName="arial.ttf" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded="true" isStrikeThrough="false" />
+                </textElement>
+                <textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"
+                       hyperlinkTarget="Self">
+                <reportElement
+                        x="658"
+                        y="30"
+                        width="100"
+                        height="18"
+                        key="textField-2"/>
+                <box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000"
+                     rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+                <textElement textAlignment="Right">
+                    <font fontName="Arial" pdfFontName="arial.ttf" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded="true" isStrikeThrough="false" />
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA["Página " + $V{PAGE_NUMBER} + " de "]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Report"
+                       hyperlinkType="None" hyperlinkTarget="Self">
+                <reportElement
+                        x="760"
+                        y="30"
+                        width="20"
+                        height="18"
+                        key="textField-3"/>
+                <box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000"
+                     rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+                <textElement>
+                    <font fontName="Arial" pdfFontName="arial.ttf" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded="true" isStrikeThrough="false" />
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA["" + $V{PAGE_NUMBER} + ""]]></textFieldExpression>
+            </textField>
+            <line direction="TopDown">
+                <reportElement
+                        x="12"
+                        y="25"
+                        width="760"
+                        height="0"
+                        key="line-8"/>
+                <graphicElement stretchType="NoStretch"/>
+            </line>
+            <subreport isUsingCache="true">
+                <reportElement
+                        x="126"
+                        y="13"
+                        width="531"
+                        height="16"
+                        key="subreport-2"/>
+                <subreportParameter name="idOrg">
+                    <subreportParameterExpression><![CDATA[$P{idOrg}]]></subreportParameterExpression>
+                </subreportParameter>
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_FOOTER}]]></subreportExpression>
+            </subreport>
+        </band>
+    </lastPageFooter>
+    <summary>
+        <band height="371" isSplitAllowed="true">
+            <lineChart>
+                <chart hyperlinkTarget="Self">
+                    <reportElement
+                            x="6"
+                            y="6"
+                            width="772"
+                            height="360"
+                            key="element-1"/>
+                    <box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000"
+                         rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+                    <chartTitle color="#000000">
+                        <titleExpression><![CDATA["VARIACION ANUAL DE TESORERIA"]]></titleExpression>
+                    </chartTitle>
+                    <chartLegend textColor="#000000" backgroundColor="#FFFFFF">
+                        <font fontName="Arial" pdfFontName="arial.ttf" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded="true" isStrikeThrough="false" />
+                    </chartLegend>
+                </chart>
+                <categoryDataset>
+                    <dataset>
+                    </dataset>
+                    <categorySeries>
+                        <seriesExpression><![CDATA["Tesorería"]]></seriesExpression>
+                        <categoryExpression><![CDATA[$F{semana}]]></categoryExpression>
+                        <valueExpression><![CDATA[$V{sumaTotal}]]></valueExpression>
+                        <itemHyperlink>
+                        </itemHyperlink>
+                    </categorySeries>
+                    <categorySeries>
+                        <seriesExpression><![CDATA["Variación diaria"]]></seriesExpression>
+                        <categoryExpression><![CDATA[$F{semana}]]></categoryExpression>
+                        <valueExpression><![CDATA[$F{cantidad}]]></valueExpression>
+                        <itemHyperlink>
+                        </itemHyperlink>
+                    </categorySeries>
+                </categoryDataset>
+                <linePlot>
+                    <plot labelRotation="-45.0"/>
+                    <categoryAxisLabelExpression><![CDATA["Semanas"]]></categoryAxisLabelExpression>
+                    <categoryAxisFormat>
+                        <axisFormat>
+                            <labelFont>
+                                <font fontName="Arial" pdfFontName="arial.ttf" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded="true" isStrikeThrough="false" />
+                            </labelFont>
+                            <tickLabelFont>
+                            </tickLabelFont>
+                        </axisFormat>
+                    </categoryAxisFormat>
+                    <valueAxisLabelExpression><![CDATA["€"]]></valueAxisLabelExpression>
+                    <valueAxisFormat>
+                        <axisFormat>
+                        </axisFormat>
+                    </valueAxisFormat>
+                </linePlot>
+            </lineChart>
+        </band>
+    </summary>
+</jasperReport>

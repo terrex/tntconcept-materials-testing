@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.Bill" table="Bill">
+        <id name="id" unsaved-value="null" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="creationDate" not-null="true" type="java.util.Date"/>
+        <property name="startBillDate" not-null="true" type="java.util.Date"/>
+        <property name="endBillDate" not-null="true" type="java.util.Date"/>
+        <property name="expiration" type="int"/>
+        <property name="paymentMode">
+            <type name="com.autentia.intra.util.GenericEnumUserType">
+                <param name="enumClassName">com.autentia.intra.businessobject.BillPaymentMode</param>
+            </type>
+        </property>
+        <property name="state" not-null="true">
+            <type name="com.autentia.intra.util.GenericEnumUserType">
+                <param name="enumClassName">com.autentia.intra.businessobject.BillState</param>
+            </type>
+        </property>
+        <!-- <property name="amount" not-null="false" type="java.math.BigDecimal"/>-->
+        <property name="number" not-null="true" type="java.lang.String" unique="true"/>
+        <property name="name" not-null="true" type="java.lang.String"/>
+        <property name="file" type="java.lang.String"/>
+        <property name="fileMime" type="java.lang.String"/>
+        <set name="entries" table="Bill_AccountEntry" cascade="all">
+            <key column="billId"/>
+            <many-to-many column="accountEntryId" class="com.autentia.intra.businessobject.AccountEntry"/>
+        </set>
+        <property name="observations" type="java.lang.String"/>
+        <many-to-one name="project" class="com.autentia.intra.businessobject.Project"
+                     column="projectId" not-null="false"/>
+
+
+        <set name="breakDown" cascade="all-delete-orphan" inverse="true" order-by="concept">
+            <key column="billId"/>
+            <one-to-many class="com.autentia.intra.businessobject.BillBreakDown"/>
+        </set>
+
+        <property name="billType">
+            <type name="com.autentia.intra.util.GenericEnumUserType">
+                <param name="enumClassName">com.autentia.intra.businessobject.BillType</param>
+            </type>
+        </property>
+
+        <property name="orderNumber" not-null="true" type="java.lang.String"/>
+        <many-to-one name="contact" class="com.autentia.intra.businessobject.Contact"
+                     column="contactId"/>
+
+        <property name="amount" type="java.math.BigDecimal"
+                  formula="(select truncate(sum((a.amount*a.units)+(((a.amount*a.units)*a.iva))/100.00),2) from BillBreakDown a, Bill b where b.id = a.billId and b.id = id)"></property>
+        <property name="entriesNumber" type="java.lang.Integer"
+                  formula="(select count(*) from Bill_AccountEntry a where a.billId = id)"></property>
+
+        <many-to-one name="client" class="com.autentia.intra.businessobject.Organization"
+                     column="clientId" not-null="false"/>
+        <many-to-one name="provider" class="com.autentia.intra.businessobject.Organization"
+                     column="providerId" not-null="false"/>
+        <property name="ownerId" type="java.lang.Integer" column="ownerId"/>
+        <property name="departmentId" type="java.lang.Integer" column="departmentId"/>
+        <property name="insertDate" type="java.util.Date" column="insertDate"/>
+        <property name="updateDate" type="java.util.Date" column="updateDate"/>
+        <property name="updatedById" type="java.lang.Integer"/>
+
+        <set name="albarans" table="Albaran" cascade="save-update,merge,persist,refresh" inverse="true">
+            <key column="billId"/>
+            <one-to-many class="com.autentia.intra.businessobject.Albaran"/>
+        </set>
+
+        <set name="offers" table="Offer" cascade="save-update,merge,persist,refresh" inverse="true">
+            <key column="billId"/>
+            <one-to-many class="com.autentia.intra.businessobject.Offer"/>
+        </set>
+
+        <set name="projects" table="Project" cascade="save-update,merge,persist,refresh" inverse="true">
+            <key column="billId"/>
+            <one-to-many class="com.autentia.intra.businessobject.Project"/>
+        </set>
+
+        <many-to-one name="lineaTrabajo" class="com.autentia.intra.businessobject.Department"
+                     column="lineaTrabajoId"/>
+        <property name="pendienteDePedido" type="java.lang.Boolean" not-null="true"/>
+    </class>
+</hibernate-mapping>

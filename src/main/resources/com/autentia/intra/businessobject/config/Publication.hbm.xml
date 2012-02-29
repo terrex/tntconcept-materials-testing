@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.Publication" table="Publication">
+        <id name="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="name" type="java.lang.String"/>
+        <property name="magazineDeliveryDate" type="java.util.Date"/>
+        <property name="magazinePublicationDate" type="java.util.Date"/>
+        <property name="ownPublicationDate" type="java.util.Date"/>
+        <property name="accepted" type="boolean"/>
+        <many-to-one name="magazine" class="com.autentia.intra.businessobject.Magazine"
+                     column="magazineId" not-null="true"/>
+        <property name="ownerId" type="java.lang.Integer" column="ownerId"/>
+        <property name="departmentId" type="java.lang.Integer" column="departmentId"/>
+        <property name="insertDate" type="java.util.Date" column="insertDate"/>
+        <property name="updateDate" type="java.util.Date" column="updateDate"/>
+        <property name="updatedById" type="java.lang.Integer"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.Offer" table="Offer">
+        <id name="id" unsaved-value="null" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="number" type="java.lang.String" not-null="true" unique="true"/>
+        <property name="title" type="java.lang.String" not-null="true"/>
+        <property name="orderNumber" type="java.lang.String"/>
+        <property name="description" type="java.lang.String"/>
+        <property name="observations" type="java.lang.String"/>
+        <many-to-one name="user" class="com.autentia.intra.businessobject.User"
+                     column="userId"/>
+        <many-to-one name="organization" class="com.autentia.intra.businessobject.Organization"
+                     column="organizationId" not-null="true"/>
+        <many-to-one name="contact" class="com.autentia.intra.businessobject.Contact"
+                     column="contactId" not-null="true"/>
+        <property name="creationDate" not-null="true" type="java.util.Date"/>
+        <property name="validityDate" type="java.util.Date"/>
+        <property name="maturityDate" type="java.util.Date"/>
+        <property name="offerState" not-null="true">
+            <type name="com.autentia.intra.util.GenericEnumUserType">
+                <param name="enumClassName">com.autentia.intra.businessobject.OfferState</param>
+            </type>
+        </property>
+        <property name="offerPotential" not-null="true">
+            <type name="com.autentia.intra.util.GenericEnumUserType">
+                <param name="enumClassName">com.autentia.intra.businessobject.OfferPotential</param>
+            </type>
+        </property>
+        <many-to-one name="offerRejectReason" class="com.autentia.intra.businessobject.OfferRejectReason"
+                     column="offerRejectReasonId"/>
+        <set name="interactions" cascade="all-delete-orphan" inverse="true" order-by="creationDate">
+            <key column="offerId"/>
+            <one-to-many class="com.autentia.intra.businessobject.Interaction"/>
+        </set>
+
+        <set name="roles" cascade="all-delete-orphan" inverse="true" order-by="name">
+            <key column="offerId"/>
+            <one-to-many class="com.autentia.intra.businessobject.OfferRole"/>
+        </set>
+
+        <property name="totalRoles" type="java.math.BigDecimal"
+                  formula="(select round(sum(a.costPerHour*a.expectedHours),2) from OfferRole a, Offer b where b.id = a.offerId and b.id = id)"></property>
+
+        <list name="ensayos" cascade="all-delete-orphan">
+            <key column="offerId" not-null="true"/>
+            <list-index column="listindex"/>
+            <one-to-many class="com.autentia.intra.businessobject.OfferEnsayo"/>
+        </list>
+
+        <property name="totalEnsayos" type="java.math.BigDecimal"
+                  formula="(select round(sum(a.cost*a.unidades),2) from OfferEnsayo a, Offer b where b.id = a.offerId and b.id = id)"></property>
+
+        <list name="pautas" cascade="all-delete-orphan">
+            <key column="offerId" not-null="true"/>
+            <list-index column="listindex"/>
+            <one-to-many class="com.autentia.intra.businessobject.OfferPauta"/>
+        </list>
+
+        <property name="totalPautas" type="java.math.BigDecimal"
+                  formula="(select round(sum(a.cost*a.unidades),2) from OfferPauta a, Offer b where b.id = a.offerId and b.id = id)"></property>
+
+        <set name="costs" cascade="all-delete-orphan" inverse="true" order-by="name">
+            <key column="offerId"/>
+            <one-to-many class="com.autentia.intra.businessobject.OfferCost"/>
+        </set>
+
+        <property name="totalCosts" type="java.math.BigDecimal"
+                  formula="(select round(sum(a.cost*a.billable),2) from OfferCost a, Offer b where b.id = a.offerId and b.id = id)"></property>
+
+
+        <property name="total" type="java.math.BigDecimal" formula="(select ifnull(round(sum(a.costPerHour*a.expectedHours),2),0) from OfferRole a, Offer b where b.id = a.offerId and b.id = id)
+  	+(select ifnull(round(sum(a.cost*a.unidades),2),0) from OfferEnsayo a, Offer b where b.id = a.offerId and b.id = id)
+  	+(select ifnull(round(sum(a.cost*a.unidades),2),0) from OfferPauta a, Offer b where b.id = a.offerId and b.id = id)
+  	+(select ifnull(round(sum(a.cost*a.billable),2),0) from OfferCost a, Offer b where b.id = a.offerId and b.id = id)"></property>
+
+
+        <property name="iva" type="java.math.BigDecimal" not-null="true"/>
+
+        <property name="ownerId" type="java.lang.Integer" column="ownerId"/>
+        <property name="departmentId" type="java.lang.Integer" column="departmentId"/>
+        <property name="insertDate" type="java.util.Date" column="insertDate"/>
+        <property name="updateDate" type="java.util.Date" column="updateDate"/>
+        <property name="updatedById" type="java.lang.Integer"/>
+        <property name="informesCreados" type="boolean"/>
+        <many-to-one name="bill" column="billId" class="com.autentia.intra.businessobject.Bill"/>
+        <set name="projects" inverse="true" order-by="id">
+            <key column="offerId"/>
+            <one-to-many class="com.autentia.intra.businessobject.Project"/>
+        </set>
+        <many-to-one name="lineaTrabajo" class="com.autentia.intra.businessobject.Department">
+            <column name="lineaTrabajoId" sql-type="integer unsigned"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

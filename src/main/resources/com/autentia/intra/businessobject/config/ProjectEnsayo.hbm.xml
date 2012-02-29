@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.ProjectEnsayo" table="ProjectEnsayo">
+        <id name="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="ensayo" class="com.autentia.intra.businessobject.Ensayo" column="ensayoId" not-null="true"/>
+        <property name="cost" type="java.math.BigDecimal" not-null="true"/>
+        <many-to-one name="project" class="com.autentia.intra.businessobject.Project" column="projectId"
+                     not-null="true" insert="false" update="false"/>
+        <property name="procedimiento" type="java.lang.String"/>
+        <property name="requerimiento" type="java.lang.String"/>
+        <property name="valor" type="java.lang.String"/>
+        <property name="conformidad" type="java.lang.String"/>
+        <property name="terminado" type="java.lang.Boolean"
+                  formula="(case when realizadoFecha is not null then 1 else 0 end)"/>
+        <property name="ownerId" type="java.lang.Integer" column="ownerId"/>
+        <property name="departmentId" type="java.lang.Integer" column="departmentId"/>
+        <property name="insertDate" type="java.util.Date" column="insertDate"/>
+        <property name="updateDate" type="java.util.Date" column="updateDate"/>
+        <property name="identificacionCliente" type="java.lang.String"/>
+        <property name="identificacionLab" type="java.lang.String"/>
+        <many-to-one name="realizadoPor" class="com.autentia.intra.businessobject.User"/>
+        <property name="realizadoFecha" type="java.util.Date"/>
+        <many-to-one name="revisadoPor" class="com.autentia.intra.businessobject.User"/>
+        <property name="revisadoFecha" type="java.util.Date"/>
+        <many-to-one name="aprobadoPor" class="com.autentia.intra.businessobject.User"/>
+        <property name="aprobadoFecha" type="java.util.Date"/>
+        <property name="observaciones" type="java.lang.String"/>
+        <list name="requerimientos" cascade="all-delete-orphan">
+            <key column="projectEnsayoId" not-null="true"/>
+            <list-index column="listindex"/>
+            <one-to-many class="com.autentia.intra.businessobject.ProjectEnsayoRequerimiento"/>
+        </list>
+        <property name="photo" type="java.lang.String"/>
+        <list name="referenciasCliente" cascade="all-delete-orphan">
+            <key column="projectEnsayoId" not-null="true"/>
+            <list-index column="listindex"/>
+            <one-to-many class="com.autentia.intra.businessobject.ProjectEnsayoIdentificacion"/>
+        </list>
+        <list name="dimensiones" cascade="all-delete-orphan">
+            <key column="projectEnsayoId" not-null="true"/>
+            <list-index column="listindex"/>
+            <one-to-many class="com.autentia.intra.businessobject.ProjectEnsayoDimension"/>
+        </list>
+        <property name="plantillaTit" type="java.lang.String"/>
+        <property name="plantillaLab" type="java.lang.String"/>
+        <property name="plantillaReq" type="java.lang.String"/>
+        <property name="plantillaDim" type="java.lang.String"/>
+        <property name="plantilla" type="java.lang.String"/>
+        <property name="updatedById" type="java.lang.Integer"/>
+        <many-to-one name="notaSalida" column="notaSalidaId" class="com.autentia.intra.businessobject.NotaSalida"/>
+        <property name="fechaRecepcionMuestra" type="java.util.Date"/>
+        <property name="idTitMatEns" type="java.lang.String"/>
+    </class>
+</hibernate-mapping>

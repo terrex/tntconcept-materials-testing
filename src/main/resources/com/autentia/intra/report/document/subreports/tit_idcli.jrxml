@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="tit_idcli"
+		 columnCount="2"
+		 printOrder="Horizontal"
+		 orientation="Landscape"
+		 pageWidth="535"
+		 pageHeight="100"
+		 columnWidth="267"
+		 columnSpacing="0"
+		 leftMargin="0"
+		 rightMargin="0"
+		 topMargin="0"
+		 bottomMargin="0"
+		 whenNoDataType="AllSectionsNoDetail"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false"
+		 isIgnorePagination="true">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="projectId" isForPrompting="true" class="java.lang.Integer"/>
+	<queryString><![CDATA[select name, valor, listindex
+from ProjectIdentificacion pid
+where pid.projectId = $P{projectId}
+union
+select 'Descripción del elemento / Element description' as name, descripcion as valor, -4
+from Project p
+where p.id = $P{projectId} and (descripcion is not null and descripcion != '')
+union
+select 'Especificación aplicable / Applicable specification' as name, especificacion as valor, -2
+from Project p
+where p.id = $P{projectId} and (especificacion is not null and especificacion != '')
+union
+select 'Fecha de recepción / Reception date' as name, DATE_FORMAT(startDate,'%e/%c/%Y') as valor, -1
+from Project p
+where p.id = $P{projectId} and startDate is not null
+union
+select 'Identificación Empresa / Id. by Empresa' as name, referenciaLaboratorio as valor, -5
+from Project p
+where p.id = $P{projectId} and (referenciaLaboratorio is not null and referenciaLaboratorio != '')
+union
+select 'Identificación Cliente / Id. by customer' as name, referenciaCliente as valor, -6
+from Project p
+where p.id = $P{projectId} and (referenciaCliente is not null and referenciaCliente != '')
+union
+select 'Número de muestras / Sample count' as name, convert(numMuestras,char(10)) as valor, -3
+from Project p
+where p.id = $P{projectId} and (numMuestras is not null)]]></queryString>
+
+	<field name="listindex" class="java.lang.Long"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="valor" class="java.lang.String"/>
+
+	<sortField name="listindex" />
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="21"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="142"
+						y="0"
+						width="125"
+						height="21"
+						key="textField-3"
+						stretchType="RelativeToTallestObject"
+						isPrintWhenDetailOverflows="true"/>
+					<box leftPadding="4" rightPadding="2" topPadding="1" bottomPadding="1">					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="arial.ttf" size="7" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" isStrikeThrough="false" />
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{valor}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="0"
+						width="142"
+						height="21"
+						key="textField-4"
+						stretchType="RelativeToTallestObject"
+						isRemoveLineWhenBlank="true"
+						isPrintWhenDetailOverflows="true"/>
+					<box leftPadding="4" rightPadding="2" topPadding="1" bottomPadding="1">					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="arialbd.ttf" size="7" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" isStrikeThrough="false" />
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{name}]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

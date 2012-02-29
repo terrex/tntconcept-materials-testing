@@ -1,0 +1,96 @@
+/* 
+ * TNTConcept Easy Enterprise Management by Autentia Real Bussiness Solution S.L.  
+ *	Copyright (C) 2007 Autentia Real Bussiness Solution S.L.					   
+ *	
+ * 	This program is free software; you can redistribute it and/or
+ * 	modify it under the terms of the GNU General Public License
+ * 	as published by the Free Software Foundation; either version 2
+ * 	of the License, or (at your option) any later version.
+ *
+ * 	This program is distributed in the hope that it will be useful,
+ * 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * 	GNU General Public License for more details.
+ *
+ * 	You should have received a copy of the GNU General Public License
+ * 	along with this program; if not, write to the Free Software
+ * 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ * 	Autentia Real Bussiness Solution S.L.
+ * 	Tlf: +34 91 675 33 06, +34 655 99 11 72
+ * 	Fax: +34 91 656 65 04
+ * 	info@autentia.com																
+ */
+
+.scheduleWeekHeader {
+    background-color: #DDDDEF;
+    width: 100%;
+}
+
+.scheduleWeekDayHeader {
+    width: 16.6666667%;
+    text-align: center;
+    font-family: tahoma;
+    font-weight: bold;
+}
+
+.scheduleMonthDayDateHeader {
+    background-color: #CCCCCC;
+    font-family: verdana;
+    font-size: 9pt;
+}
+
+.scheduleMonthDayHeader {
+    text-align: center;
+    background-color: white;
+}
+
+.schedule {
+    width: 100%;
+    overflow: auto;
+}
+
+.entry {
+    font-family: verdana;
+    font-size: 8pt;
+}
+
+.entryBillable {
+    color: green;
+}
+
+.settingActivityPopup {
+    padding: 4 4 4 4;
+    background-color: white;
+    border-width: thin;
+    border-style: dotted;
+    border-color: #ABABAB;
+    width: 250px;
+}
+
+input.scheduleCalendar {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+    background-color: yellow;
+}
+
+.progressBar {
+    width: 250px;
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    padding: 2px 2px 2px 2px;
+    background-image: url("../img/progressbar.png");
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: visible;
+    z-index: 1001;
+
+}
+
+.progressBarText {
+    font-family: verdana;
+    font-size: 8pt;
+    color: black;
+}

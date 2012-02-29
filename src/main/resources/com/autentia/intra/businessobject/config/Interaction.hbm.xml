@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.Interaction" table="Interaction">
+        <id name="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="creationDate" type="java.util.Date" not-null="true"/>
+        <many-to-one name="project" class="com.autentia.intra.businessobject.Project"
+                     column="projectId"/>
+        <many-to-one name="client" class="com.autentia.intra.businessobject.Organization"
+                     column="organizationId"/>
+        <many-to-one name="type" class="com.autentia.intra.businessobject.InteractionType"
+                     column="interactionTypeId" not-null="true"/>
+        <many-to-one name="user" class="com.autentia.intra.businessobject.User"
+                     column="userId" not-null="true"/>
+        <property name="interest" not-null="true">
+            <type name="com.autentia.intra.util.GenericEnumUserType">
+                <param name="enumClassName">com.autentia.intra.businessobject.InteractionInterest</param>
+            </type>
+        </property>
+        <property name="medio" not-null="true">
+            <type name="com.autentia.intra.util.GenericEnumUserType">
+                <param name="enumClassName">com.autentia.intra.businessobject.InteractionMedio</param>
+            </type>
+        </property>
+        <property name="why" not-null="true" type="java.lang.String"/>
+        <property name="description" not-null="true" type="java.lang.String"/>
+        <property name="file" type="java.lang.String"/>
+        <property name="fileMime" type="java.lang.String"/>
+        <property name="observations" not-null="true" type="java.lang.String"/>
+
+        <many-to-one name="offer" class="com.autentia.intra.businessobject.Offer"
+                     column="offerId"/>
+
+        <property name="departmentId" type="java.lang.Integer" column="departmentId"/>
+        <property name="insertDate" type="java.util.Date" column="insertDate"/>
+        <property name="updateDate" type="java.util.Date" column="updateDate"/>
+        <property name="updatedById" type="java.lang.Integer"/>
+    </class>
+</hibernate-mapping>

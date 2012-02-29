@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/tntconcept/" />
+<title>OrganizationBean.list</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">OrganizationBean.list</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/tntconcept/pages/contacts/organizations.jsf</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a &gt; img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>runScriptAndWait</td>
+	<td>document.forms[0].elements[2].value=_cmItemList[28][2];document.forms[0].submit();</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Categoría ISO</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Nuestra empresa</td>
+	<td></td>
+</tr>
+<!--Listado OK-->
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@title='Nuevo']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[@id='organization:_idJsp25']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Error de validación</td>
+	<td></td>
+</tr>
+<!--validacion campos obligatorios ok-->
+<tr>
+	<td>type</td>
+	<td>id=organization:name</td>
+	<td>Empresa Test 446</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=organization:type</td>
+	<td>label=Cliente y proveedor</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=organization:type</td>
+	<td>label=Cliente</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=organization:province</td>
+	<td>label=Cádiz</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[@id='organization:_idJsp25']/img</td>
+	<td></td>
+</tr>
+<!--Crear Organización OK-->
+<tr>
+	<td>click</td>
+	<td>css=td.editFieldCell &gt; img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=14</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//img[@onclick=&quot;organization_3AfechaCaducidadCertificadoCalendarVar._popUpCalendar(this,document.getElementById('organization:fechaCaducidadCertificado'),'d/MM/yyyy')&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=organization:estado</td>
+	<td>label=No aceptado</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=organization:estado</td>
+	<td>label=Aceptado</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=organization:postalCode</td>
+	<td>213214</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=organization:cif</td>
+	<td>34234</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=organization:numeroProveedor</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=organization:street</td>
+	<td>dsgdfg</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=organization:number</td>
+	<td>34</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=organization:locator</td>
+	<td>sdfsdg</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@id='organization:_idJsp25']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Por favor, confirme la operación de actualización.</td>
+	<td></td>
+</tr>
+<!--Actualizar Organización OK-->
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[@id='organization:_idJsp29']/img</td>
+	<td></td>
+</tr>
+<!--Listado OK-->
+<tr>
+	<td>clickAndWait</td>
+	<td>id=organizations:list:2:_idJsp53</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=organization:name</td>
+	<td>Empresa Test 446_editado</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@id='organization:_idJsp25']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Por favor, confirme la operación de actualización.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=organization:name</td>
+	<td>Nuestra empresa</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@id='organization:_idJsp25']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Por favor, confirme la operación de actualización.</td>
+	<td></td>
+</tr>
+<!--Editar OK-->
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[@id='organization:_idJsp29']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[@id='organizations:list:2:_idJsp42']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[@id='precios:_idJsp27']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[@id='organizations:list:2:_idJsp39']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[@id='organization:_idJsp29']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[@id='organizations:list:2:_idJsp45']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@id='organization:_idJsp25']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Por favor, confirme la operación de actualización.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[@id='organization:_idJsp29']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>(copia)</td>
+	<td></td>
+</tr>
+<!--Editar Duplicado OK-->
+<tr>
+	<td>clickAndWait</td>
+	<td>id=organizations:list:3:_idJsp53</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@id='organization:_idJsp27']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Por favor, confirme la operación de borrado.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=organizations:list:1:_idJsp53</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@id='organization:_idJsp27']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Por favor, confirme la operación de borrado.</td>
+	<td></td>
+</tr>
+<!--Eliminar OK-->
+</tbody></table>
+</body>
+</html>

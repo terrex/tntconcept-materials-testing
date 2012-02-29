@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<securityConfiguration>
+    <entities>
+        <entity name="User">
+            <operation name="delete" admin="deny" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="own" staff="own" user="own" cli="deny"/>
+            <operation name="read" admin="all" super="area" staff="all" user="own" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="false" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="true" cli="false"/>
+        </entity>
+
+        <entity name="Role">
+            <operation name="delete" admin="deny" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Organization">
+            <operation name="delete" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Project">
+            <operation name="delete" admin="all" super="area" staff="area" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="all" staff="all" user="area" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="true" cli="false"/>
+        </entity>
+
+        <entity name="ProjectRole">
+            <operation name="delete" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="area" staff="all" user="area" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="false" cli="false"/>
+        </entity>
+
+        <entity name="UserCategory">
+            <operation name="delete" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="false" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="true"/>
+        </entity>
+
+        <entity name="Department">
+            <operation name="delete" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="false" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Setting">
+            <operation name="delete" admin="own" super="own" staff="own" user="own" cli="own"/>
+            <operation name="write" admin="own" super="own" staff="own" user="own" cli="own"/>
+            <operation name="read" admin="own" super="own" staff="own" user="own" cli="own"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="true"/>
+            <operation name="create" admin="true" super="true" staff="true" user="true" cli="true"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="true" cli="true"/>
+        </entity>
+
+        <entity name="AccountEntryGroup">
+            <operation name="delete" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="AccountEntryType">
+            <operation name="delete" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="false" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="OrganizationType">
+            <operation name="delete" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="false" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Ensayo">
+            <operation name="delete" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="all" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="true" cli="false"/>
+        </entity>
+
+        <entity name="InteractionType">
+            <operation name="delete" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="false" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="OrganizationISOCategory">
+            <operation name="delete" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="false" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="ContractType">
+            <operation name="delete" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="false" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Province">
+            <operation name="delete" admin="deny" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="all"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Bill">
+            <operation name="delete" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="deny" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Account">
+            <operation name="delete" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="deny" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="AccountType">
+            <operation name="delete" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="deny" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+
+        <entity name="AccountEntry">
+            <operation name="delete" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="deny" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="PeriodicalAccountEntry">
+            <operation name="delete" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="deny" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Frequency">
+            <operation name="delete" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="deny" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Contact">
+            <operation name="delete" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="all" staff="all" user="own" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="own" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="true" cli="false"/>
+        </entity>
+
+        <entity name="Interaction">
+            <operation name="delete" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="own" cli="deny"/>
+            <operation name="read" admin="all" super="area" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="true" cli="false"/>
+        </entity>
+
+        <entity name="Offer">
+            <operation name="delete" admin="all" super="deny" staff="area" user="area" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="area" user="area" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="true" cli="false"/>
+        </entity>
+
+        <entity name="Document">
+            <operation name="delete" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="own" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="true" cli="false"/>
+        </entity>
+
+        <entity name="DocumentCategory">
+            <operation name="delete" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="own" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="true" cli="false"/>
+        </entity>
+
+        <entity name="BulletinBoard">
+            <operation name="delete" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="own" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="false" cli="false"/>
+        </entity>
+
+        <entity name="CompanyState">
+            <operation name="delete" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="own" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="false" cli="false"/>
+        </entity>
+
+        <entity name="BulletinBoardCategory">
+            <operation name="delete" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="true"/>
+            <operation name="create" admin="true" super="false" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Idea">
+            <operation name="delete" admin="all" super="own" staff="own" user="own" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="own" cli="own"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="all"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="true"/>
+            <operation name="create" admin="true" super="true" staff="true" user="true" cli="true"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="true" cli="true"/>
+        </entity>
+
+        <entity name="Activity">
+            <operation name="delete" admin="own" super="own" staff="own" user="own" cli="deny"/>
+            <operation name="write" admin="own" super="own" staff="own" user="own" cli="deny"/>
+            <operation name="read" admin="all" super="area" staff="own" user="own" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="true" cli="false"/>
+        </entity>
+
+        <entity name="Occupation">
+            <operation name="delete" admin="all" super="area" staff="deny" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="deny" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="area" staff="deny" user="deny" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="false" user="false" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="false" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Objective">
+            <operation name="delete" admin="all" super="area" staff="own" user="own" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="deny" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="area" staff="own" user="own" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="true" cli="false"/>
+        </entity>
+
+        <entity name="Tutorial">
+            <operation name="delete" admin="all" super="area" staff="all" user="own" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="own" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Publication">
+            <operation name="delete" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Magazine">
+            <operation name="delete" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="deny" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Holiday">
+            <operation name="delete" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="all"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="true"/>
+            <operation name="create" admin="true" super="false" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="false" cli="true"/>
+        </entity>
+
+        <entity name="RequestHoliday">
+            <operation name="delete" admin="all" super="area" staff="all" user="own" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="own" cli="deny"/>
+            <operation name="read" admin="all" super="area" staff="all" user="own" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="true" cli="false"/>
+        </entity>
+
+        <entity name="AdminHoliday">
+            <operation name="delete" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="create" admin="false" super="false" staff="false" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Book">
+            <operation name="delete" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Inventary">
+            <operation name="delete" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="deny" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="OfferRejectReason">
+            <operation name="delete" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="FinancialRatio">
+            <operation name="delete" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="list" admin="true" super="false" staff="false" user="false" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="false" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="false" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="WorkingAgreement">
+            <operation name="delete" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="deny" staff="deny" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="false" staff="false" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="false" user="false" cli="false"/>
+        </entity>
+
+        <entity name="ProjectEnsayo">
+            <operation name="delete" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="area" staff="all" user="area" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="true" cli="false"/>
+        </entity>
+
+        <entity name="EnsayoPrecio">
+            <operation name="delete" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="area" staff="all" user="area" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="false" cli="false"/>
+        </entity>
+
+        <entity name="PautaPrecio">
+            <operation name="delete" admin="all" super="area" staff="deny" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="deny" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="area" staff="all" user="area" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Albaran">
+            <operation name="delete" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="deny" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="false" cli="false"/>
+        </entity>
+
+        <entity name="NotaSalida">
+            <operation name="delete" admin="all" super="deny" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="deny" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="false" cli="false"/>
+        </entity>
+
+        <entity name="Pauta">
+            <operation name="delete" admin="all" super="all" staff="area" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="all" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="area" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="true" cli="false"/>
+        </entity>
+
+        <entity name="ProductoPrecio">
+            <operation name="delete" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="area" staff="all" user="area" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="false" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="false" cli="false"/>
+        </entity>
+        <entity name="PautaEnsayo">
+            <operation name="delete" admin="all" super="area" staff="all" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="all" staff="area" user="deny" cli="deny"/>
+            <operation name="read" admin="all" super="area" staff="all" user="area" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="false" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="true" cli="false"/>
+        </entity>
+
+        <entity name="Historial">
+            <operation name="delete" admin="all" super="area" staff="area" user="deny" cli="deny"/>
+            <operation name="write" admin="all" super="all" staff="all" user="area" cli="deny"/>
+            <operation name="read" admin="all" super="all" staff="all" user="all" cli="deny"/>
+            <operation name="list" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="create" admin="true" super="true" staff="true" user="true" cli="false"/>
+            <operation name="menu" admin="true" super="true" staff="true" user="true" cli="false"/>
+        </entity>
+
+    </entities>
+
+    <actions>
+        <!-- Por defecto el privilegio está a false para todos los roles si no se especifica lo contrario -->
+        <action name="Authenticated" admin="true" super="true" staff="true" user="true" cli="true"/>
+        <action name="Action_ChangePassword" admin="true" super="true" staff="true" user="true" cli="true"/>
+        <action name="Action_ResetPassword" admin="true"/>
+        <action name="Action_ChangeRole" admin="true"/>
+        <action name="Action_ListQualityDocuments" admin="true" super="true" staff="true" user="true"/>
+        <action name="Action_GeneralReports" admin="true" super="true" staff="false"/>
+        <action name="Action_BitacoreReports" admin="true" super="true" staff="true" user="true" cli="true"/>
+        <action name="Action_BillReports" admin="true" super="true" staff="true"/>
+        <action name="Action_InteractionReports" admin="true" super="true" staff="true"/>
+        <action name="Action_OrganizationReports" admin="true" super="true" staff="false"/>
+        <action name="Action_PersonalReports" admin="true" super="true" staff="false"/>
+        <action name="Action_OfferReports" admin="true" super="true" staff="true"/>
+        <action name="Action_ProjectReports" admin="true" super="true" staff="true"/>
+        <action name="Action_NOF" admin="true" super="true" staff="false"/>
+        <action name="Action_GlobalHoursReport" admin="true" super="true" staff="true"/>
+        <action name="Action_UserHolidaysState" admin="true" super="true" staff="true"/>
+        <action name="Action_MyHolidays" admin="true" super="true" staff="true" user="true"/>
+
+
+    </actions>
+</securityConfiguration>

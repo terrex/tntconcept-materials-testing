@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/tntconcept" docBase="tntconcept">
+    <Manager pathname=""/>
+    <Environment name="TNTConceptConfigDir" type="java.lang.String"
+                 value="/PATH/TO/ttnconcept/configuration"/>
+    <Resource name="jdbc/TNTConcept" auth="Container" type="javax.sql.DataSource"
+              maxActive="100" maxIdle="30" maxWait="10000" driverClassName="com.mysql.jdbc.Driver"
+              username="tnt" password="tnt"
+              url="jdbc:mysql://localhost:3306/tnt?autoReconnect=true"/>
+</Context>

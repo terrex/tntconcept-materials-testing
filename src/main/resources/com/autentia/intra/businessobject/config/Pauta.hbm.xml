@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.Pauta" table="Pauta">
+        <id name="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+
+        <property name="name" type="java.lang.String" not-null="true"/>
+
+        <property name="description" type="java.lang.String"/>
+
+        <many-to-one name="cliente" column="clienteId" class="com.autentia.intra.businessobject.Organization"/>
+
+        <property name="material" type="java.lang.String"/>
+
+        <property name="agrupacion" type="java.lang.String"/>
+
+        <property name="ensayosSolicitados" type="java.lang.String"/>
+
+        <property name="cost" type="java.math.BigDecimal"/>
+
+        <property name="ownerId" type="java.lang.Integer"/>
+
+        <property name="departmentId" type="java.lang.Integer"/>
+
+        <property name="insertDate" type="java.util.Date"/>
+
+        <property name="updateDate" type="java.util.Date"/>
+
+        <property name="updatedById" type="java.lang.Integer"/>
+
+        <list name="ensayos" cascade="all-delete-orphan">
+            <key column="pautaId" not-null="true"/>
+            <list-index column="listindex"/>
+            <one-to-many class="com.autentia.intra.businessobject.PautaEnsayo"/>
+        </list>
+
+        <property name="referenciaCliente" type="java.lang.String"/>
+        <list name="referenciasCliente" cascade="all-delete-orphan">
+            <key column="pautaId" not-null="true"/>
+            <list-index column="listindex"/>
+            <one-to-many class="com.autentia.intra.businessobject.PautaIdentificacion"/>
+        </list>
+
+        <property name="titulo" type="java.lang.String"/>
+
+        <property name="familia" type="java.lang.String"/>
+
+        <bag name="pautaprecios" cascade="all-delete-orphan" inverse="true">
+            <key column="pautaId" not-null="true"/>
+            <one-to-many class="com.autentia.intra.businessobject.PautaPrecio"/>
+        </bag>
+        <property name="tiempoRespuesta" type="java.lang.Integer"/>
+    </class>
+</hibernate-mapping>

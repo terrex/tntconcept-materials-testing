@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="titdetalle"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="535"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="0"
+		 rightMargin="0"
+		 topMargin="0"
+		 bottomMargin="0"
+		 whenNoDataType="AllSectionsNoDetail"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+	<import value="com.autentia.intra.servlet.ReportServlet" />
+	<import value="com.autentia.intra.util.ConfigurationUtil" />
+
+	<parameter name="projectId" isForPrompting="true" class="java.lang.Integer"/>
+	<queryString><![CDATA[select (select name from Organization o where o.id=p.organizationId) as clienteNombre,
+p.*,
+(select name from `User` u where id = p.realizadoPor) as realizadoPorNombre,
+(select cargo from `User` u where id = p.realizadoPor) as realizadoPorCargo,
+pe.id as projectEnsayoId,
+pe.listindex,
+pe.plantillaTit as projectEnsayoPlantillaTit
+from Project p
+join ProjectEnsayo pe
+on(pe.projectId=p.id)
+where p.id = $P{projectId}]]></queryString>
+
+	<field name="clienteNombre" class="java.lang.String"/>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="organizationId" class="java.lang.Integer"/>
+	<field name="startDate" class="java.sql.Date"/>
+	<field name="endDate" class="java.sql.Date"/>
+	<field name="open" class="java.lang.Boolean"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="description" class="java.lang.String"/>
+	<field name="ownerId" class="java.lang.Integer"/>
+	<field name="departmentId" class="java.lang.Long"/>
+	<field name="insertDate" class="java.sql.Timestamp"/>
+	<field name="updateDate" class="java.sql.Timestamp"/>
+	<field name="billable" class="java.lang.Boolean"/>
+	<field name="orderNumber" class="java.lang.String"/>
+	<field name="referenciaCliente" class="java.lang.String"/>
+	<field name="referenciaLaboratorio" class="java.lang.String"/>
+	<field name="especificacion" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="lote" class="java.lang.String"/>
+	<field name="loteFabricante" class="java.lang.String"/>
+	<field name="proveedor" class="java.lang.String"/>
+	<field name="fabricante" class="java.lang.String"/>
+	<field name="recibidoPor" class="java.lang.Integer"/>
+	<field name="supervisadoPor" class="java.lang.Integer"/>
+	<field name="realizadoPor" class="java.lang.Integer"/>
+	<field name="observaciones" class="java.lang.String"/>
+	<field name="motivoDevolucion" class="java.lang.String"/>
+	<field name="numMuestras" class="java.lang.Integer"/>
+	<field name="ensayosSolicitados" class="java.lang.String"/>
+	<field name="estadoDeRecepcion" class="java.lang.String"/>
+	<field name="objetivosDelInforme" class="java.lang.String"/>
+	<field name="costeAFacturar" class="java.math.BigDecimal"/>
+	<field name="realizadoFecha" class="java.sql.Timestamp"/>
+	<field name="fechaCaducidad" class="java.sql.Timestamp"/>
+	<field name="titulo" class="java.lang.String"/>
+	<field name="plantilla" class="java.lang.String"/>
+	<field name="updatedById" class="java.lang.Integer"/>
+	<field name="offerId" class="java.lang.Integer"/>
+	<field name="albaranId" class="java.lang.Integer"/>
+	<field name="realizadoPorNombre" class="java.lang.String"/>
+	<field name="realizadoPorCargo" class="java.lang.String"/>
+	<field name="projectEnsayoId" class="java.lang.Integer"/>
+	<field name="listindex" class="java.lang.Integer"/>
+	<field name="projectEnsayoPlantillaTit" class="java.lang.String"/>
+
+	<sortField name="listindex" />
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="26"  isSplitAllowed="true" >
+				<subreport  isUsingCache="false">
+					<reportElement
+						x="0"
+						y="0"
+						width="535"
+						height="21"
+						key="subreport-13"
+						positionType="Float"
+						isRemoveLineWhenBlank="true"
+						isPrintWhenDetailOverflows="true"/>
+					<subreportParameter  name="projectEnsayoId">
+						<subreportParameterExpression><![CDATA[$F{projectEnsayoId}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[com.autentia.intra.servlet.ReportServlet.subreport("document/", $F{projectEnsayoPlantillaTit})]]></subreportExpression>
+				</subreport>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

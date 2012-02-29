@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.BulletinBoard" table="BulletinBoard">
+        <id name="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="category" class="com.autentia.intra.businessobject.BulletinBoardCategory"
+                     column="categoryId" not-null="true"/>
+        <many-to-one name="user" class="com.autentia.intra.businessobject.User"
+                     column="userId" not-null="true"/>
+        <property name="creationDate" type="java.util.Date"/>
+        <property name="title" not-null="true" type="java.lang.String"/>
+        <property name="message" not-null="true" type="java.lang.String"/>
+        <property name="documentPath" type="java.lang.String"/>
+        <property name="documentContentType" type="java.lang.String"/>
+
+        <property name="departmentId" type="java.lang.Integer" column="departmentId"/>
+        <property name="insertDate" type="java.util.Date" column="insertDate"/>
+        <property name="updateDate" type="java.util.Date" column="updateDate"/>
+        <property name="updatedById" type="java.lang.Integer"/>
+    </class>
+</hibernate-mapping>

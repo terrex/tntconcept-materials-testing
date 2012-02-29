@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.PeriodicalAccountEntry" table="PeriodicalAccountEntry">
+        <id name="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="account" class="com.autentia.intra.businessobject.Account" column="accountId" not-null="true"
+                />
+        <many-to-one name="type" class="com.autentia.intra.businessobject.AccountEntryType" column="accountEntryTypeId"
+                     not-null="true"/>
+        <many-to-one name="frequency" class="com.autentia.intra.businessobject.Frequency" column="frequencyId"
+                     not-null="true"/>
+        <property name="concept" type="java.lang.String"/>
+        <property name="date" not-null="true" type="java.util.Date" column="entryDate"/>
+        <property name="amount" not-null="true" type="java.math.BigDecimal"/>
+        <property name="rise" type="java.math.BigDecimal"/>
+        <property name="observations" type="java.lang.String"/>
+        <property name="ownerId" type="java.lang.Integer" column="ownerId"/>
+        <property name="departmentId" type="java.lang.Integer" column="departmentId"/>
+        <property name="insertDate" type="java.util.Date" column="insertDate"/>
+        <property name="updateDate" type="java.util.Date" column="updateDate"/>
+        <property name="updatedById" type="java.lang.Integer"/>
+    </class>
+</hibernate-mapping>

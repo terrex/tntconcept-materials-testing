@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="tit_ensayo"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="535"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="0"
+		 rightMargin="0"
+		 topMargin="0"
+		 bottomMargin="0"
+		 whenNoDataType="AllSectionsNoDetail"
+		 isFloatColumnFooter="true"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false"
+		 isIgnorePagination="true">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+	<import value="com.autentia.intra.util.ConfigurationUtil" />
+
+	<parameter name="projectEnsayoId" isForPrompting="true" class="java.lang.Integer"/>
+	<queryString><![CDATA[select pe.*,
+e.name as eName,
+e.nameIngles as eNameIngles
+from ProjectEnsayo pe
+join Ensayo e
+on (e.id=pe.ensayoId)
+where pe.id = $P{projectEnsayoId}]]></queryString>
+
+	<field name="id" class="java.lang.Integer"/>
+	<field name="projectId" class="java.lang.Integer"/>
+	<field name="ensayoId" class="java.lang.Integer"/>
+	<field name="cost" class="java.math.BigDecimal"/>
+	<field name="ownerId" class="java.lang.Integer"/>
+	<field name="departmentId" class="java.lang.Long"/>
+	<field name="insertDate" class="java.sql.Timestamp"/>
+	<field name="updateDate" class="java.sql.Timestamp"/>
+	<field name="procedimiento" class="java.lang.String"/>
+	<field name="requerimiento" class="java.lang.String"/>
+	<field name="valor" class="java.lang.String"/>
+	<field name="conformidad" class="java.lang.String"/>
+	<field name="identificacionCliente" class="java.lang.String"/>
+	<field name="identificacionLab" class="java.lang.String"/>
+	<field name="realizadoPor" class="java.lang.Integer"/>
+	<field name="revisadoPor" class="java.lang.Integer"/>
+	<field name="aprobadoPor" class="java.lang.Integer"/>
+	<field name="observaciones" class="java.lang.String"/>
+	<field name="photo" class="java.lang.String"/>
+	<field name="realizadoFecha" class="java.sql.Timestamp"/>
+	<field name="revisadoFecha" class="java.sql.Timestamp"/>
+	<field name="aprobadoFecha" class="java.sql.Timestamp"/>
+	<field name="plantillaTit" class="java.lang.String"/>
+	<field name="plantillaLab" class="java.lang.String"/>
+	<field name="plantillaReq" class="java.lang.String"/>
+	<field name="plantillaDim" class="java.lang.String"/>
+	<field name="plantilla" class="java.lang.String"/>
+	<field name="updatedById" class="java.lang.Integer"/>
+	<field name="listindex" class="java.lang.Integer"/>
+	<field name="eName" class="java.lang.String"/>
+	<field name="eNameIngles" class="java.lang.String"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="111"  isSplitAllowed="false" >
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="31"
+						y="6"
+						width="473"
+						height="12"
+						key="textField-1"
+						isPrintWhenDetailOverflows="true"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="arialbd.ttf" size="8" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" isStrikeThrough="false" />
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{eName} + " / " + $F{eNameIngles}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="31"
+						y="18"
+						width="473"
+						height="12"
+						key="textField-2"
+						positionType="Float"
+						isPrintWhenDetailOverflows="true"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="arial.ttf" size="6" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" isStrikeThrough="false" />
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["s/ " + $F{procedimiento}]]></textFieldExpression>
+				</textField>
+				<subreport  isUsingCache="false">
+					<reportElement
+						x="0"
+						y="51"
+						width="535"
+						height="18"
+						key="subreport-2"
+						positionType="Float"
+						isRemoveLineWhenBlank="true"
+						isPrintWhenDetailOverflows="true"/>
+					<subreportParameter  name="projectEnsayoId">
+						<subreportParameterExpression><![CDATA[$P{projectEnsayoId}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[com.autentia.intra.servlet.ReportServlet.subreport("document/", $F{plantillaReq})]]></subreportExpression>
+				</subreport>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="91"
+						width="535"
+						height="18"
+						key="textField-5"
+						positionType="Float"
+						isPrintWhenDetailOverflows="true"/>
+					<box leftPadding="1" rightPadding="1" topPadding="1" bottomPadding="1">					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="arial.ttf" size="6" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" isStrikeThrough="false" />
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["La declaración de conformidad emitida está basada en los resultados anexados a este informe con la codificación " +
+$F{identificacionLab} + ".\n" +
+"Estos ensayos han sido subcontratados al Laboratorio de Ensayos, Corrosión y Protección de la Universidad de Cádiz."]]></textFieldExpression>
+				</textField>
+				<subreport  isUsingCache="false">
+					<reportElement
+						x="0"
+						y="71"
+						width="535"
+						height="18"
+						key="subreport-3"
+						positionType="Float"
+						isRemoveLineWhenBlank="true"
+						isPrintWhenDetailOverflows="true">
+							<printWhenExpression><![CDATA[new Boolean(!$F{conformidad}.equals(""))]]></printWhenExpression>
+						</reportElement>
+					<subreportParameter  name="encabezado">
+						<subreportParameterExpression><![CDATA["CONFORMIDAD / Conformity"]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter  name="texto">
+						<subreportParameterExpression><![CDATA[$F{conformidad}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[com.autentia.intra.servlet.ReportServlet.subreport("document/", "cuadro_texto")]]></subreportExpression>
+				</subreport>
+				<subreport  isUsingCache="false">
+					<reportElement
+						x="0"
+						y="31"
+						width="535"
+						height="18"
+						key="subreport-5"
+						positionType="Float"
+						isRemoveLineWhenBlank="true"
+						isPrintWhenDetailOverflows="true">
+							<printWhenExpression><![CDATA[new Boolean(!$F{valor}.equals(""))]]></printWhenExpression>
+						</reportElement>
+					<subreportParameter  name="projectEnsayoId">
+						<subreportParameterExpression><![CDATA[$P{projectEnsayoId}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[com.autentia.intra.servlet.ReportServlet.subreport("document/", "tit_ensayo_paramunico")]]></subreportExpression>
+				</subreport>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

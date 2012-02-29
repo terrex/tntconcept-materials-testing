@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/tntconcept/" />
+<title>NotaSalidaBean</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">NotaSalidaBean</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/tntconcept/pages/contacts/notaSalidas.jsf</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a &gt; img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>runScriptAndWait</td>
+	<td>document.forms[0].elements[2].value=_cmItemList[34][2];document.forms[0].submit();</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Notas de Salida</td>
+	<td></td>
+</tr>
+<!--Listado OK-->
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@title='Nuevo']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=notaSalida:clienteOrigen</td>
+	<td>label=Acronotex (ATE)</td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=notaSalida:selectedProject</td>
+	<td>label=ATE0002/12 - P001/12 Recepción ATE-8834</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img.cmdImg</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@title='Nuevo']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@title='Guardar']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@title='Volver']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>NS001/12</td>
+	<td></td>
+</tr>
+<!--Crear Nota de salida OK-->
+<tr>
+	<td>clickAndWait</td>
+	<td>id=notaSalidas:list:0:_idJsp44</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//img[@title='Imprimir nota de salida PDF']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPopUpAndWait</td>
+	<td>report</td>
+	<td>30000</td>
+</tr>
+<!--Imprimir Nota de salida OK-->
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@title='Volver']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@title='Definir un criterio de filtro para los elementos del listado.']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=search:nameValid</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=search:name</td>
+	<td>001/12</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@title='Ejecutar']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>NS001/12</td>
+	<td></td>
+</tr>
+<!--Buscar nota de salida OK-->
+<tr>
+	<td>clickAndWait</td>
+	<td>id=notaSalidas:list:0:_idJsp44</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img.cmdImg</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img.cmdImg</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//img[@title='Eliminar']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Por favor, confirme la operación de borrado.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>NS001/12</td>
+	<td></td>
+</tr>
+<!--Borrar nota de salida OK-->
+</tbody></table>
+</body>
+</html>

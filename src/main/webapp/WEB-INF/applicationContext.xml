@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+    <import resource="applicationContext-core.xml"/>
+    <import resource="applicationContext-acegi-security.xml"/>
+    <import resource="applicationContext-tntconcept-security.xml"/>
+
+</beans>

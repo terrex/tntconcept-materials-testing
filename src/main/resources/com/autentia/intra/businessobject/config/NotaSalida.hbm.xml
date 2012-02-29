@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.NotaSalida" table="NotaSalida">
+        <id name="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="name" type="java.lang.String" not-null="true" unique="true"/>
+        <property name="fecha" type="java.util.Date" not-null="true"/>
+        <set name="projectEnsayos" table="ProjectEnsayo" inverse="true">
+            <key column="notaSalidaId"/>
+            <one-to-many class="com.autentia.intra.businessobject.ProjectEnsayo"/>
+        </set>
+        <property name="ownerId" type="java.lang.Integer"/>
+        <property name="departmentId" type="java.lang.Integer"/>
+        <property name="insertDate" type="java.util.Date"/>
+        <property name="updateDate" type="java.util.Date"/>
+        <property name="updatedById" type="java.lang.Integer"/>
+        <many-to-one name="peticionario" class="com.autentia.intra.businessobject.Organization"
+                     column="peticionarioId"/>
+        <many-to-one name="clienteOrigen" class="com.autentia.intra.businessobject.Organization"
+                     column="clienteOrigenId"/>
+        <property name="observaciones" type="java.lang.String"/>
+        <property name="unico" type="java.lang.Boolean"/>
+    </class>
+</hibernate-mapping>

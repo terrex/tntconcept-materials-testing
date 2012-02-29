@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.Organization" table="Organization">
+        <id name="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="type" class="com.autentia.intra.businessobject.OrganizationType"
+                     column="organizationTypeId"/>
+        <many-to-one name="category" class="com.autentia.intra.businessobject.OrganizationISOCategory"
+                     column="organizationISOCategoryId"/>
+        <property name="name" type="java.lang.String"/>
+        <property name="acronimo" type="java.lang.String"/>
+        <property name="cif" type="java.lang.String"/>
+        <property name="street" type="java.lang.String"/>
+        <property name="number" type="java.lang.String"/>
+        <property name="locator" type="java.lang.String"/>
+        <property name="postalCode" type="java.lang.String"/>
+        <property name="city" type="java.lang.String"/>
+        <many-to-one name="province" class="com.autentia.intra.businessobject.Province" column="provinceId"/>
+        <property name="state" type="java.lang.String"/>
+        <property name="country" type="java.lang.String"/>
+
+        <property name="phone" type="java.lang.String"/>
+        <property name="fax" type="java.lang.String"/>
+        <property name="email" type="java.lang.String"/>
+        <property name="website" type="java.lang.String"/>
+        <property name="ftpsite" type="java.lang.String"/>
+
+        <!--
+        <set name="contacts" inverse="true" order-by="name">
+          <key column="id" />
+          <one-to-many class="com.autentia.intra.businessobject.Contact" />
+        </set>
+        -->
+        <property name="notes" type="java.lang.String"/>
+        <property name="columnaRefCli" type="java.lang.String"/>
+        <property name="ownerId" type="java.lang.Integer" column="ownerId"/>
+        <property name="departmentId" type="java.lang.Integer" column="departmentId"/>
+        <property name="insertDate" type="java.util.Date" column="insertDate"/>
+        <property name="updateDate" type="java.util.Date" column="updateDate"/>
+        <property name="updatedById" type="java.lang.Integer"/>
+        <property name="procedimientoAdministrativo" type="java.lang.String" not-null="false" length="1024"/>
+        <property name="direccionEnvioInformes" type="text" not-null="false"/>
+        <property name="direccionEnvioFactura" type="text" not-null="false"/>
+        <property name="fechaAlta" type="java.util.Date" not-null="false"/>
+        <property name="fechaCaducidadCertificado" type="java.util.Date" not-null="false"/>
+        <property name="certificado" not-null="false">
+            <type name="com.autentia.intra.util.GenericEnumUserType">
+                <param name="enumClassName">com.autentia.intra.businessobject.OrganizationCertificado</param>
+            </type>
+        </property>
+        <property name="estado" not-null="false">
+            <type name="com.autentia.intra.util.GenericEnumUserType">
+                <param name="enumClassName">com.autentia.intra.businessobject.OrganizationEstado</param>
+            </type>
+        </property>
+        <set name="ensayoPrecios" inverse="true" cascade="save-update,delete-orphan" table="EnsayoPrecio">
+            <key column="organizationId"/>
+            <one-to-many class="com.autentia.intra.businessobject.EnsayoPrecio"/>
+        </set>
+        <set name="pautaPrecios" inverse="true" cascade="save-update,delete-orphan" table="PautaPrecio">
+            <key column="organizationId"/>
+            <one-to-many class="com.autentia.intra.businessobject.PautaPrecio"/>
+        </set>
+        <set name="productoPrecios" inverse="true" cascade="save-update,delete-orphan" table="ProductoPrecio">
+            <key column="organizationId"/>
+            <one-to-many class="com.autentia.intra.businessobject.ProductoPrecio"/>
+        </set>
+        <property name="numeroProveedor" type="java.lang.String"/>
+    </class>
+
+</hibernate-mapping>

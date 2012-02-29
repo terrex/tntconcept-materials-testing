@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
+        "http://java.sun.com/dtd/web-facesconfig_1_0.dtd">
+<faces-config>
+
+    <!-- Bean for the admin console window -->
+    <managed-bean>
+        <managed-bean-name>consoleBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.single.ConsoleBean
+        </managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean for accesing to pageScope attributes -->
+    <managed-bean>
+        <managed-bean-name>pageBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.PageBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean for sending mail -->
+    <managed-bean>
+        <managed-bean-name>sendMailBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.util.SendMailBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean for menu handling -->
+    <managed-bean>
+        <managed-bean-name>menuBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.MenuBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean for menu handling -->
+    <managed-bean>
+        <managed-bean-name>dynMenuBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.DynMenuBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+
+    <!-- Bean for bills screen -->
+    <managed-bean>
+        <managed-bean-name>billBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.billing.BillBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!--  Bean for interactions screen -->
+    <managed-bean>
+        <managed-bean-name>interactionBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.contacts.InteractionBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!--  Bean for organizations screen -->
+    <managed-bean>
+        <managed-bean-name>organizationBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.contacts.OrganizationBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!--  Bean for organization contacts screen -->
+    <managed-bean>
+        <managed-bean-name>contactBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.contacts.ContactBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!--  Bean for bitacore reports screen -->
+    <managed-bean>
+        <managed-bean-name>bitacoreReportBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.reports.BitacoreReportBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!--  Bean for generic bitacore reports screen -->
+    <managed-bean>
+        <managed-bean-name>generalReportBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.reports.GeneralReportBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>activityReportBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.reports.ActivityReportBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>projectReportBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.reports.ProjectReportBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>organizationReportBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.reports.OrganizationReportBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>offerReportBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.reports.OfferReportBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>personalReportBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.reports.PersonalReportBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>billReportBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.reports.BillReportBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>interactionReportBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.reports.InteractionReportBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>genericBitacoreReportBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.reports.GenericBitacoreReportBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!--  Bean for activities (bitacore) screen -->
+    <managed-bean>
+        <managed-bean-name>activityBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.activity.ActivityBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!--  Bean for bulletin board screen -->
+    <managed-bean>
+        <managed-bean-name>bulletinBoardBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.bulletin.BulletinBoardBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!--  Bean for bulletin board category screen -->
+    <managed-bean>
+        <managed-bean-name>bulletinBoardCategoryBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.bulletin.BulletinBoardCategoryBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean for user categories screen -->
+    <managed-bean>
+        <managed-bean-name>userCategoryBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.admin.UserCategoryBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean for users screen -->
+    <managed-bean>
+        <managed-bean-name>userBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.admin.UserBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean for inventary screen -->
+    <managed-bean>
+        <managed-bean-name>inventaryBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.admin.InventaryBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean for project screen -->
+    <managed-bean>
+        <managed-bean-name>projectBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.admin.ProjectBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!--  Bean for ideas screen -->
+    <managed-bean>
+        <managed-bean-name>ideaBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.admin.IdeaBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean for company state screen -->
+    <managed-bean>
+        <managed-bean-name>companyStateBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.bulletin.CompanyStateBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean for magazines screen -->
+    <managed-bean>
+        <managed-bean-name>magazineBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.publish.MagazineBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean for tutorials screen -->
+    <managed-bean>
+        <managed-bean-name>tutorialBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.publish.TutorialBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean for publications screen -->
+    <managed-bean>
+        <managed-bean-name>publicationBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.publish.PublicationBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean for objectives screen -->
+    <managed-bean>
+        <managed-bean-name>objectiveBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.activity.ObjectiveBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Sin revisar ******************************************************************************************** -->
+
+    <!-- Bean de aplicación. Contiene y maneja parámetros comunes y que deben estar visibles en toda la aplicacion -->
+    <managed-bean>
+        <description>Bean de aplicaciónn</description>
+        <managed-bean-name>applicationBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.ApplicationBean
+        </managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para el manejo de la fecha y hora actuales -->
+    <managed-bean>
+        <managed-bean-name>dateTimeBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.DateTimeBean
+        </managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean de sesión. Contiene y maneja parámetros comunes y que deben estar visibles en las sesiones de los usuarios -->
+    <managed-bean>
+        <description>Bean de sesión</description>
+        <managed-bean-name>sessionBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.SessionBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para cambio de password -->
+    <managed-bean>
+        <managed-bean-name>changePasswordBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.ChangePasswordBean
+        </managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para seguimiento semanal -->
+    <managed-bean>
+        <managed-bean-name>seguimientoBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.seguimiento.SeguimientoSemanalBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!--  Bean para el manejo de dedicaciones -->
+    <managed-bean>
+        <managed-bean-name>actividadBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.seguimiento.ActividadBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!--  Bean para el manejo de documentos de calidad -->
+    <managed-bean>
+        <managed-bean-name>calidadBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.calidad.CalidadBean
+        </managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para el manejo de informe de dedicaciones -->
+    <managed-bean>
+        <managed-bean-name>informesBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.informes.InformeDedicacionesBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para el manejo del informe de objetivos -->
+    <managed-bean>
+        <managed-bean-name>informeObjetivosBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.informes.InformeObjetivosBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>accountBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.account.AccountBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>accountEntryTypeBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.account.AccountEntryTypeBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>accountEntryBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.account.AccountEntryBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para el manejo de categorías de documentos -->
+    <managed-bean>
+        <managed-bean-name>documentCategoryBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.document.DocumentCategoryBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para el manejo de documentos -->
+    <managed-bean>
+        <managed-bean-name>documentBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.document.DocumentBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para el manejo de libros -->
+    <managed-bean>
+        <managed-bean-name>bookBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.book.BookBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>
+            periodicalAccountEntryBean
+        </managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.account.PeriodicalAccountEntryBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>interactionTypeBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.contacts.InteractionTypeBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>organizationTypeBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.contacts.OrganizationTypeBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>ensayoBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.contacts.EnsayoBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>
+            organizationISOCategoryBean
+        </managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.contacts.OrganizationISOCategoryBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para el manejo de festivos -->
+    <managed-bean>
+        <managed-bean-name>holidayBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.holiday.HolidayBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para el manejo de peticiones de vacaciones -->
+    <managed-bean>
+        <managed-bean-name>requestHolidayBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.holiday.RequestHolidayBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para el manejo de peticiones de vacaciones por el adminstrador-->
+    <managed-bean>
+        <managed-bean-name>adminHolidayBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.holiday.AdminHolidayBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para el manejo de departamentos -->
+    <managed-bean>
+        <managed-bean-name>departmentBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.admin.DepartmentBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para el manejo de tipos de contrato -->
+    <managed-bean>
+        <managed-bean-name>contractTypeBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.admin.ContractTypeBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para el manejo de tipos de contrato -->
+    <managed-bean>
+        <managed-bean-name>errorBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.error.ErrorBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para el manejo de causas de rechazo de ofertas -->
+    <managed-bean>
+        <managed-bean-name>offerRejectReasonBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.contacts.OfferRejectReasonBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para el manejo de NOF -->
+    <managed-bean>
+        <managed-bean-name>nofBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.account.NOFBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para el manejo de causas de rechazo de ofertas -->
+    <managed-bean>
+        <managed-bean-name>offerBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.contacts.OfferBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean para el manejo de ratios financieros -->
+    <managed-bean>
+        <managed-bean-name>financialRatioBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.billing.FinancialRatioBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Bean for settings handling -->
+    <managed-bean>
+        <managed-bean-name>settingBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.admin.SettingBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <!-- Bean for global hours report handling -->
+
+    <managed-bean>
+        <managed-bean-name>globalHoursReportBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.activity.GlobalHoursReportBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Occupation Bean -->
+    <managed-bean>
+        <managed-bean-name>occupationBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.activity.OccupationBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Availability Bean -->
+    <managed-bean>
+        <managed-bean-name>availabilityBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.occupation.AvailabilityBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- WorkingAgreement Bean -->
+    <managed-bean>
+        <managed-bean-name>workingAgreementBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.admin.WorkingAgreementBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- UserHolidaysState Bean -->
+    <managed-bean>
+        <managed-bean-name>userHolidaysStateBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.holiday.UserHolidaysStateBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- ProjectEnsayo Bean -->
+    <managed-bean>
+        <managed-bean-name>projectEnsayoBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.admin.ProjectEnsayoBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Albaran Bean -->
+    <managed-bean>
+        <managed-bean-name>albaranBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.contacts.AlbaranBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Pauta Bean -->
+    <managed-bean>
+        <managed-bean-name>pautaBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.contacts.PautaBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>actualizarPreciosBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.contacts.ActualizarPreciosBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- ProjectEnsayo Bean -->
+    <managed-bean>
+        <managed-bean-name>pautaEnsayoBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.contacts.PautaEnsayoBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+
+    <!-- NotaSalidan Bean -->
+    <managed-bean>
+        <managed-bean-name>notaSalidaBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.contacts.NotaSalidaBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>historicoBean</managed-bean-name>
+        <managed-bean-class>
+            com.autentia.intra.bean.admin.HistoricoBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+</faces-config>
+
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.Department" table="Department">
+        <id name="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="parent" class="com.autentia.intra.businessobject.Department" column="parentId"/>
+        <property name="name" type="java.lang.String"/>
+        <property name="description" type="java.lang.String"/>
+        <property name="ownerId" type="java.lang.Integer" column="ownerId"/>
+        <property name="departmentId" type="java.lang.Integer" column="departmentId"/>
+        <property name="insertDate" type="java.util.Date" column="insertDate"/>
+        <property name="updateDate" type="java.util.Date" column="updateDate"/>
+        <property name="updatedById" type="java.lang.Integer"/>
+        <set name="offers" inverse="true">
+            <key column="lineaTrabajoId"/>
+            <one-to-many class="com.autentia.intra.businessobject.Offer" not-found="ignore"/>
+        </set>
+        <set name="bills" inverse="true">
+            <key column="lineaTrabajoId"/>
+            <one-to-many class="com.autentia.intra.businessobject.Bill" not-found="ignore"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.Project" table="Project">
+        <id name="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="offer" class="com.autentia.intra.businessobject.Offer" column="offerId" not-found="ignore"/>
+        <property name="startDate" type="java.util.Date"/>
+        <property name="endDate" type="java.util.Date"/>
+        <property name="open" type="java.lang.Boolean"/>
+        <property name="orderNumber" type="java.lang.String"/>
+        <property name="name" type="java.lang.String"/>
+        <property name="description" type="java.lang.String"/>
+        <many-to-one name="client" class="com.autentia.intra.businessobject.Organization" column="organizationId"
+                     not-null="false"/>
+        <set name="roles" cascade="all-delete-orphan" inverse="true" order-by="name">
+            <key column="projectId"/>
+            <one-to-many class="com.autentia.intra.businessobject.ProjectRole"/>
+        </set>
+        <list name="ensayos" cascade="all-delete-orphan">
+            <key column="projectId" not-null="true"/>
+            <list-index column="listindex"/>
+            <one-to-many class="com.autentia.intra.businessobject.ProjectEnsayo"/>
+        </list>
+        <set name="costs" cascade="all-delete-orphan" inverse="true" order-by="name">
+            <key column="projectId"/>
+            <one-to-many class="com.autentia.intra.businessobject.ProjectCost"/>
+        </set>
+        <property name="billable" type="java.lang.Boolean"/>
+        <property name="ownerId" type="java.lang.Integer" column="ownerId"/>
+        <property name="departmentId" type="java.lang.Integer" column="departmentId"/>
+        <property name="insertDate" type="java.util.Date" column="insertDate"/>
+        <property name="updateDate" type="java.util.Date" column="updateDate"/>
+
+        <property name="titulo" type="java.lang.String"/>
+        <property name="referenciaCliente" type="java.lang.String"/>
+        <list name="referenciasCliente" cascade="all-delete-orphan">
+            <key column="projectId" not-null="true"/>
+            <list-index column="listindex"/>
+            <one-to-many class="com.autentia.intra.businessobject.ProjectIdentificacion"/>
+        </list>
+        <property name="referenciaLaboratorio" type="java.lang.String" unique="true"/>
+        <property name="especificacion" type="java.lang.String"/>
+        <property name="descripcion" type="java.lang.String"/>
+        <property name="permanencia" type="java.lang.Integer" formula="(to_days(endDate) - to_days(startDate))"/>
+        <many-to-one name="recibidoPor" class="com.autentia.intra.businessobject.User"/>
+        <many-to-one name="supervisadoPor" class="com.autentia.intra.businessobject.User"/>
+        <many-to-one name="realizadoPor" class="com.autentia.intra.businessobject.User"/>
+        <property name="realizadoFecha" type="java.util.Date"/>
+        <property name="fechaCaducidad" type="java.util.Date"/>
+        <property name="observaciones" type="java.lang.String"/>
+        <property name="numMuestras" type="java.lang.Integer"/>
+        <property name="motivoDevolucion" type="java.lang.String"/>
+        <property name="ensayosSolicitados" type="java.lang.String"/>
+        <property name="estadoDeRecepcion" type="java.lang.String"/>
+        <property name="costeAFacturar" type="java.math.BigDecimal"/>
+
+        <property name="plantilla" type="java.lang.String"/>
+        <property name="updatedById" type="java.lang.Integer"/>
+        <many-to-one name="albaran" column="albaranId" class="com.autentia.intra.businessobject.Albaran"/>
+        <property name="plantillaLab" type="java.lang.String"/>
+        <property name="tiempoRespuesta" type="java.lang.Integer"/>
+        <property name="estado" lazy="true">
+            <formula>
+                (select p_e.estado from Project_Estado p_e where p_e.id = id)
+            </formula>
+            <type name="com.autentia.intra.util.GenericEnumUserType">
+                <param name="enumClassName">com.autentia.intra.businessobject.ProjectEstado</param>
+            </type>
+        </property>
+        <many-to-one name="bill" class="com.autentia.intra.businessobject.Bill" column="billId"/>
+    </class>
+</hibernate-mapping>

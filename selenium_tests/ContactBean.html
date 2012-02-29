@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/tntconcept/" />
+<title>ContactBean</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">ContactBean</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/tntconcept/pages/contacts/contacts.jsf</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a &gt; img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>runScriptAndWait</td>
+	<td>document.forms[0].elements[2].value=_cmItemList[30][2];document.forms[0].submit();</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Buscar Contactos</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@title='Ejecutar']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Luis Cabeza Ruiz</td>
+	<td></td>
+</tr>
+<!--Listado OK-->
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@title='Nuevo']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=contact:name</td>
+	<td>Fernando Ramírez</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=contact:organization</td>
+	<td>label=Nuestra empresa (NE)</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=contact:organization</td>
+	<td>label=Acronotex (ATE)</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=contact:email</td>
+	<td>fernando.ramirez@acronotex.es</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[@id='contact:_idJsp25']/img</td>
+	<td></td>
+</tr>
+<!--Crear contacto OK-->
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[@id='contact:_idJsp29']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=contacts:list:0:_idJsp52</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=contact:name</td>
+	<td>Fernando Ramírez Herrero</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[@id='contact:_idJsp25']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[@id='contact:_idJsp29']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=td.listContactEmail</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Fernando Ramírez Herrero</td>
+	<td></td>
+</tr>
+<!--Editar contacto OK-->
+<tr>
+	<td>clickAndWait</td>
+	<td>id=contacts:list:0:_idJsp52</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@id='contact:_idJsp27']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Por favor, confirme la operación de borrado.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>Fernando Ramírez Herrero</td>
+	<td></td>
+</tr>
+<!--Borrar contacto OK-->
+</tbody></table>
+</body>
+</html>

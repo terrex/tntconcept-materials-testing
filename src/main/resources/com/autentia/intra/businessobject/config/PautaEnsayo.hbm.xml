@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.PautaEnsayo" table="PautaEnsayo">
+        <id name="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+
+        <many-to-one name="ensayo" class="com.autentia.intra.businessobject.Ensayo" column="ensayoId"
+                     not-null="true"/>
+
+        <property name="procedimiento" type="java.lang.String"/>
+
+        <property name="ownerId" type="java.lang.Integer"/>
+
+        <property name="departmentId" type="java.lang.Integer"/>
+
+        <property name="insertDate" type="java.util.Date"/>
+
+        <property name="updateDate" type="java.util.Date"/>
+
+        <list name="requerimientos" cascade="all-delete-orphan">
+            <key column="pautaEnsayoId" not-null="true"/>
+            <list-index column="listindex"/>
+            <one-to-many class="com.autentia.intra.businessobject.ParametroString"/>
+        </list>
+
+        <list name="dimensiones" cascade="all-delete-orphan">
+            <key column="pautaEnsayoId" not-null="true"/>
+            <list-index column="listindex"/>
+            <one-to-many class="com.autentia.intra.businessobject.PautaEnsayoDimension"/>
+        </list>
+
+        <many-to-one name="pauta" column="pautaId" class="com.autentia.intra.businessobject.Pauta" not-null="true"
+                     insert="false" update="false"/>
+        <property name="updatedById" type="java.lang.Integer"/>
+    </class>
+</hibernate-mapping>

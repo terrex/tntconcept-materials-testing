@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.ProjectEnsayoRequerimiento" table="ProjectEnsayoRequerimiento">
+        <id name="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="nombre" type="java.lang.String"/>
+        <property name="nombreIngles" type="java.lang.String"/>
+        <property name="requerimiento" type="java.lang.String"/>
+        <property name="valor" type="java.lang.String"/>
+        <property name="conformidad" type="java.lang.String"/>
+
+        <property name="ownerId" type="java.lang.Integer" column="ownerId"/>
+        <property name="departmentId" type="java.lang.Integer" column="departmentId"/>
+        <property name="insertDate" type="java.util.Date" column="insertDate"/>
+        <property name="updateDate" type="java.util.Date" column="updateDate"/>
+        <many-to-one name="projectEnsayo" column="projectEnsayoId"
+                     class="com.autentia.intra.businessobject.ProjectEnsayo"
+                     not-null="true" insert="false" update="false"/>
+        <property name="updatedById" type="java.lang.Integer"/>
+    </class>
+</hibernate-mapping>

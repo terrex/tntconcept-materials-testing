@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.Ensayo" table="Ensayo">
+        <id name="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="name" not-null="true" type="java.lang.String"/>
+        <property name="nameIngles" type="java.lang.String"/>
+        <set name="procedimientos" inverse="true" cascade="all-delete-orphan" table="EnsayoProcedimiento">
+            <key column="ensayoId"/>
+            <one-to-many class="com.autentia.intra.businessobject.EnsayoProcedimiento" not-found="ignore"/>
+        </set>
+        <property name="description" type="java.lang.String"/>
+        <property name="cost" type="java.math.BigDecimal"/>
+        <property name="ownerId" type="java.lang.Integer" column="ownerId"/>
+        <property name="departmentId" type="java.lang.Integer" column="departmentId"/>
+        <property name="insertDate" type="java.util.Date" column="insertDate"/>
+        <property name="updateDate" type="java.util.Date" column="updateDate"/>
+        <property name="updatedById" type="java.lang.Integer"/>
+        <property name="dimensional" type="boolean"/>
+    </class>
+</hibernate-mapping>

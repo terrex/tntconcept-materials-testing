@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+    <!-- Configuration bean -->
+    <bean id="configuration" class="com.autentia.intra.util.ConfigurationUtil">
+        <!-- JNDI variable holding configuration directory -->
+        <constructor-arg value="java:comp/env/TNTConceptConfigDir"/>
+        <!-- Configuration file -->
+        <constructor-arg value="autentia.properties"/>
+    </bean>
+
+    <!-- DAOs -->
+    <bean id="daoAccount" class="com.autentia.intra.dao.hibernate.AccountDAO"/>
+    <bean id="daoAccountEntry" class="com.autentia.intra.dao.hibernate.AccountEntryDAO"/>
+    <bean id="daoAccountEntryGroup" class="com.autentia.intra.dao.hibernate.AccountEntryGroupDAO"/>
+    <bean id="daoAccountEntryType" class="com.autentia.intra.dao.hibernate.AccountEntryTypeDAO"/>
+    <bean id="daoAccountType" class="com.autentia.intra.dao.hibernate.AccountTypeDAO"/>
+    <bean id="daoActivity" class="com.autentia.intra.dao.hibernate.ActivityDAO"/>
+    <bean id="daoAdminHoliday" class="com.autentia.intra.dao.hibernate.AdminHolidayDAO"/>
+    <bean id="daoBill" class="com.autentia.intra.dao.hibernate.BillDAO"/>
+    <bean id="daoBook" class="com.autentia.intra.dao.hibernate.BookDAO"/>
+    <bean id="daoBulletinBoardCategory" class="com.autentia.intra.dao.hibernate.BulletinBoardCategoryDAO"/>
+    <bean id="daoBulletinBoard" class="com.autentia.intra.dao.hibernate.BulletinBoardDAO"/>
+    <bean id="daoCompanyState" class="com.autentia.intra.dao.hibernate.CompanyStateDAO"/>
+    <bean id="daoContact" class="com.autentia.intra.dao.hibernate.ContactDAO"/>
+    <bean id="daoContractType" class="com.autentia.intra.dao.hibernate.ContractTypeDAO"/>
+    <bean id="daoDepartment" class="com.autentia.intra.dao.hibernate.DepartmentDAO"/>
+    <bean id="daoDocumentCategory" class="com.autentia.intra.dao.hibernate.DocumentCategoryDAO"/>
+    <bean id="daoDocument" class="com.autentia.intra.dao.hibernate.DocumentDAO"/>
+    <bean id="daoDocumentVersion" class="com.autentia.intra.dao.hibernate.DocumentVersionDAO"/>
+    <bean id="daoHistorial" class="com.autentia.intra.dao.hibernate.HistorialDAO"/>
+    <bean id="daoHoliday" class="com.autentia.intra.dao.hibernate.HolidayDAO"/>
+    <bean id="daoIdea" class="com.autentia.intra.dao.hibernate.IdeaDAO"/>
+    <bean id="daoInteraction" class="com.autentia.intra.dao.hibernate.InteractionDAO"/>
+    <bean id="daoInteractionType" class="com.autentia.intra.dao.hibernate.InteractionTypeDAO"/>
+    <bean id="daoInventary" class="com.autentia.intra.dao.hibernate.InventaryDAO"/>
+    <bean id="daoMagazine" class="com.autentia.intra.dao.hibernate.MagazineDAO"/>
+    <bean id="daoObjective" class="com.autentia.intra.dao.hibernate.ObjectiveDAO"/>
+    <bean id="daoOrganization" class="com.autentia.intra.dao.hibernate.OrganizationDAO"/>
+    <bean id="daoOrganizationISOCategory" class="com.autentia.intra.dao.hibernate.OrganizationISOCategoryDAO"/>
+    <bean id="daoOrganizationType" class="com.autentia.intra.dao.hibernate.OrganizationTypeDAO"/>
+    <bean id="daoPeriodicalAccountEntry" class="com.autentia.intra.dao.hibernate.PeriodicalAccountEntryDAO"/>
+    <bean id="daoProjectCost" class="com.autentia.intra.dao.hibernate.ProjectCostDAO"/>
+    <bean id="daoProject" class="com.autentia.intra.dao.hibernate.ProjectDAO"/>
+    <bean id="daoProjectRole" class="com.autentia.intra.dao.hibernate.ProjectRoleDAO"/>
+    <bean id="daoProvince" class="com.autentia.intra.dao.hibernate.ProvinceDAO"/>
+    <bean id="daoPublication" class="com.autentia.intra.dao.hibernate.PublicationDAO"/>
+    <bean id="daoRequestHoliday" class="com.autentia.intra.dao.hibernate.RequestHolidayDAO"/>
+    <bean id="daoRole" class="com.autentia.intra.dao.hibernate.RoleDAO"/>
+    <bean id="daoTutorial" class="com.autentia.intra.dao.hibernate.TutorialDAO"/>
+    <bean id="daoUserCategory" class="com.autentia.intra.dao.hibernate.UserCategoryDAO"/>
+    <bean id="daoUser" class="com.autentia.intra.dao.hibernate.UserDAO"/>
+    <bean id="daoFrequency" class="com.autentia.intra.dao.hibernate.FrequencyDAO"/>
+    <bean id="daoOfferRejectReason" class="com.autentia.intra.dao.hibernate.OfferRejectReasonDAO"/>
+    <bean id="daoOffer" class="com.autentia.intra.dao.hibernate.OfferDAO"/>
+    <bean id="daoBillBreakDown" class="com.autentia.intra.dao.hibernate.BillBreakDownDAO"/>
+    <bean id="daoFinancialRatio" class="com.autentia.intra.dao.hibernate.FinancialRatioDAO"/>
+    <bean id="daoOfferCost" class="com.autentia.intra.dao.hibernate.OfferCostDAO"/>
+    <bean id="daoOfferRole" class="com.autentia.intra.dao.hibernate.OfferRoleDAO"/>
+    <bean id="daoSetting" class="com.autentia.intra.dao.hibernate.SettingDAO"/>
+    <bean id="daoOccupation" class="com.autentia.intra.dao.hibernate.OccupationDAO"/>
+    <bean id="daoWorkingAgreement" class="com.autentia.intra.dao.hibernate.WorkingAgreementDAO"/>
+    <bean id="daoEnsayo" class="com.autentia.intra.dao.hibernate.EnsayoDAO"/>
+
+    <bean id="daoOfferEnsayo" class="com.autentia.intra.dao.hibernate.OfferEnsayoDAO"/>
+    <bean id="daoOfferPauta" class="com.autentia.intra.dao.hibernate.OfferPautaDAO"/>
+    <bean id="daoProjectEnsayo" class="com.autentia.intra.dao.hibernate.ProjectEnsayoDAO"/>
+    <bean id="daoEnsayoPrecio" class="com.autentia.intra.dao.hibernate.EnsayoPrecioDAO"/>
+    <bean id="daoAlbaran" class="com.autentia.intra.dao.hibernate.AlbaranDAO"/>
+    <bean id="daoPauta" class="com.autentia.intra.dao.hibernate.PautaDAO"/>
+    <bean id="daoPautaPrecio" class="com.autentia.intra.dao.hibernate.PautaPrecioDAO"/>
+    <bean id="daoProductoPrecio" class="com.autentia.intra.dao.hibernate.ProductoPrecioDAO"/>
+    <bean id="daoPautaEnsayo" class="com.autentia.intra.dao.hibernate.PautaEnsayoDAO"/>
+    <bean id="daoParametroString" class="com.autentia.intra.dao.hibernate.ParametroStringDAO"/>
+    <bean id="daoProjectEnsayoRequerimiento" class="com.autentia.intra.dao.hibernate.ProjectEnsayoRequerimientoDAO"/>
+    <bean id="daoNotaSalida" class="com.autentia.intra.dao.hibernate.NotaSalidaDAO"/>
+    <!-- Managers -->
+    <bean id="managerAccountEntry" class="com.autentia.intra.manager.account.AccountEntryManager">
+        <constructor-arg ref="daoAccountEntry"/>
+    </bean>
+    <bean id="managerAccountEntryType" class="com.autentia.intra.manager.account.AccountEntryTypeManager">
+        <constructor-arg ref="daoAccountEntryType"/>
+    </bean>
+    <bean id="managerAccount" class="com.autentia.intra.manager.account.AccountManager">
+        <constructor-arg ref="daoAccount"/>
+    </bean>
+    <bean id="managerPeriodicalAccountEntry" class="com.autentia.intra.manager.account.PeriodicalAccountEntryManager">
+        <constructor-arg ref="daoPeriodicalAccountEntry"/>
+    </bean>
+    <bean id="managerObjective" class="com.autentia.intra.manager.activity.ObjectiveManager">
+        <constructor-arg ref="daoObjective"/>
+    </bean>
+    <bean id="managerContractType" class="com.autentia.intra.manager.admin.ContractTypeManager">
+        <constructor-arg ref="daoContractType"/>
+    </bean>
+    <bean id="managerDepartment" class="com.autentia.intra.manager.admin.DepartmentManager">
+        <constructor-arg ref="daoDepartment"/>
+    </bean>
+    <bean id="managerIdea" class="com.autentia.intra.manager.admin.IdeaManager">
+        <constructor-arg ref="daoIdea"/>
+    </bean>
+    <bean id="managerInventary" class="com.autentia.intra.manager.admin.InventaryManager">
+        <constructor-arg ref="daoInventary"/>
+    </bean>
+    <bean id="managerProject" class="com.autentia.intra.manager.admin.ProjectManager">
+        <constructor-arg ref="daoProject"/>
+    </bean>
+    <bean id="managerUserCategory" class="com.autentia.intra.manager.admin.UserCategoryManager">
+        <constructor-arg ref="daoUserCategory"/>
+    </bean>
+    <bean id="managerUser" class="com.autentia.intra.manager.admin.UserManager">
+        <constructor-arg ref="daoUser"/>
+    </bean>
+    <bean id="managerBill" class="com.autentia.intra.manager.billing.BillManager">
+        <constructor-arg ref="daoBill"/>
+    </bean>
+    <bean id="managerBook" class="com.autentia.intra.manager.book.BookManager">
+        <constructor-arg ref="daoBook"/>
+    </bean>
+    <bean id="managerBulletinBoardCategory" class="com.autentia.intra.manager.bulletin.BulletinBoardCategoryManager">
+        <constructor-arg ref="daoBulletinBoardCategory"/>
+    </bean>
+    <bean id="managerBulletinBoard" class="com.autentia.intra.manager.bulletin.BulletinBoardManager">
+        <constructor-arg ref="daoBulletinBoard"/>
+    </bean>
+    <bean id="managerCompanyState" class="com.autentia.intra.manager.bulletin.CompanyStateManager">
+        <constructor-arg ref="daoCompanyState"/>
+    </bean>
+    <bean id="managerContact" class="com.autentia.intra.manager.contacts.ContactManager">
+        <constructor-arg ref="daoContact"/>
+    </bean>
+    <bean id="managerInteraction" class="com.autentia.intra.manager.contacts.InteractionManager">
+        <constructor-arg ref="daoInteraction"/>
+    </bean>
+    <bean id="managerInteractionType" class="com.autentia.intra.manager.contacts.InteractionTypeManager">
+        <constructor-arg ref="daoInteractionType"/>
+    </bean>
+    <bean id="managerOrganizationISOCategory"
+          class="com.autentia.intra.manager.contacts.OrganizationISOCategoryManager">
+        <constructor-arg ref="daoOrganizationISOCategory"/>
+    </bean>
+    <bean id="managerOrganization" class="com.autentia.intra.manager.contacts.OrganizationManager">
+        <constructor-arg ref="daoOrganization"/>
+    </bean>
+    <bean id="managerOrganizationType" class="com.autentia.intra.manager.contacts.OrganizationTypeManager">
+        <constructor-arg ref="daoOrganizationType"/>
+    </bean>
+    <bean id="managerDocumentCategory" class="com.autentia.intra.manager.document.DocumentCategoryManager">
+        <constructor-arg ref="daoDocumentCategory"/>
+    </bean>
+    <bean id="managerDocument" class="com.autentia.intra.manager.document.DocumentManager">
+        <constructor-arg ref="daoDocument"/>
+    </bean>
+    <bean id="managerAdminHoliday" class="com.autentia.intra.manager.holiday.AdminHolidayManager">
+        <constructor-arg ref="daoAdminHoliday"/>
+    </bean>
+    <bean id="managerHistorial" class="com.autentia.intra.manager.admin.HistorialManager">
+        <constructor-arg ref="daoHistorial"/>
+    </bean>
+    <bean id="managerHoliday" class="com.autentia.intra.manager.holiday.HolidayManager">
+        <constructor-arg ref="daoHoliday"/>
+    </bean>
+    <bean id="managerRequestHoliday" class="com.autentia.intra.manager.holiday.RequestHolidayManager">
+        <constructor-arg ref="daoRequestHoliday"/>
+    </bean>
+    <bean id="managerMagazine" class="com.autentia.intra.manager.publish.MagazineManager">
+        <constructor-arg ref="daoMagazine"/>
+    </bean>
+    <bean id="managerPublication" class="com.autentia.intra.manager.publish.PublicationManager">
+        <constructor-arg ref="daoPublication"/>
+    </bean>
+    <bean id="managerTutorial" class="com.autentia.intra.manager.publish.TutorialManager">
+        <constructor-arg ref="daoTutorial"/>
+    </bean>
+    <bean id="managerProvince" class="com.autentia.intra.manager.admin.ProvinceManager">
+        <constructor-arg ref="daoProvince"/>
+    </bean>
+    <bean id="managerOfferRejectReason" class="com.autentia.intra.manager.contacts.OfferRejectReasonManager">
+        <constructor-arg ref="daoOfferRejectReason"/>
+    </bean>
+    <bean id="managerProjectRole" class="com.autentia.intra.manager.admin.ProjectRoleManager">
+        <constructor-arg ref="daoProjectRole"/>
+    </bean>
+    <bean id="managerProjectCost" class="com.autentia.intra.manager.admin.ProjectCostManager">
+        <constructor-arg ref="daoProjectCost"/>
+    </bean>
+    <bean id="managerFrequency" class="com.autentia.intra.manager.admin.FrequencyManager">
+        <constructor-arg ref="daoFrequency"/>
+    </bean>
+    <bean id="managerRole" class="com.autentia.intra.manager.admin.RoleManager">
+        <constructor-arg ref="daoRole"/>
+    </bean>
+    <bean id="managerDocumentVersion" class="com.autentia.intra.manager.document.DocumentVersionManager">
+        <constructor-arg ref="daoDocumentVersion"/>
+    </bean>
+    <bean id="managerAccountEntryGroup" class="com.autentia.intra.manager.account.AccountEntryGroupManager">
+        <constructor-arg ref="daoAccountEntryGroup"/>
+    </bean>
+    <bean id="managerAccountType" class="com.autentia.intra.manager.account.AccountTypeManager">
+        <constructor-arg ref="daoAccountType"/>
+    </bean>
+    <bean id="managerBillBreakDown" class="com.autentia.intra.manager.billing.BillBreakDownManager">
+        <constructor-arg ref="daoBillBreakDown"/>
+    </bean>
+
+    <bean id="managerOffer" class="com.autentia.intra.manager.contacts.OfferManager">
+        <constructor-arg ref="daoOffer"/>
+    </bean>
+
+    <bean id="managerFinancialRatio" class="com.autentia.intra.manager.billing.FinancialRatioManager">
+        <constructor-arg ref="daoFinancialRatio"/>
+    </bean>
+    <bean id="managerOfferRole" class="com.autentia.intra.manager.contacts.OfferRoleManager">
+        <constructor-arg ref="daoOfferRole"/>
+    </bean>
+    <bean id="managerOfferCost" class="com.autentia.intra.manager.contacts.OfferCostManager">
+        <constructor-arg ref="daoOfferCost"/>
+    </bean>
+    <bean id="managerSetting" class="com.autentia.intra.manager.admin.SettingManager">
+        <constructor-arg ref="daoSetting"/>
+    </bean>
+    <bean id="managerActivity" class="com.autentia.intra.manager.activity.ActivityManager">
+        <constructor-arg ref="daoActivity"/>
+    </bean>
+
+    <bean id="managerGlobalHoursReport" class="com.autentia.intra.manager.activity.GlobalHourReportManager"/>
+
+    <bean id="managerOccupation" class="com.autentia.intra.manager.activity.OccupationManager">
+        <constructor-arg ref="daoOccupation"/>
+    </bean>
+
+    <bean id="managerWorkingAgreement" class="com.autentia.intra.manager.admin.WorkingAgreementManager">
+        <constructor-arg ref="daoWorkingAgreement"/>
+    </bean>
+
+    <bean id="managerUserHolidaysState" class="com.autentia.intra.manager.holiday.UserHolidaysStateManager"/>
+
+    <bean id="managerEnsayo" class="com.autentia.intra.manager.contacts.EnsayoManager">
+        <constructor-arg ref="daoEnsayo"/>
+    </bean>
+
+    <bean id="managerOfferEnsayo" class="com.autentia.intra.manager.contacts.OfferEnsayoManager">
+        <constructor-arg ref="daoOfferEnsayo"/>
+    </bean>
+    <bean id="managerOfferPauta" class="com.autentia.intra.manager.contacts.OfferPautaManager">
+        <constructor-arg ref="daoOfferPauta"/>
+    </bean>
+    <bean id="managerProjectEnsayo" class="com.autentia.intra.manager.admin.ProjectEnsayoManager">
+        <constructor-arg ref="daoProjectEnsayo"/>
+    </bean>
+    <bean id="managerEnsayoPrecio" class="com.autentia.intra.manager.contacts.EnsayoPrecioManager">
+        <constructor-arg ref="daoEnsayoPrecio"/>
+    </bean>
+    <bean id="managerAlbaran" class="com.autentia.intra.manager.contacts.AlbaranManager">
+        <constructor-arg ref="daoAlbaran"/>
+    </bean>
+    <bean id="managerPauta" class="com.autentia.intra.manager.contacts.PautaManager">
+        <constructor-arg ref="daoPauta"/>
+    </bean>
+    <bean id="managerPautaPrecio" class="com.autentia.intra.manager.contacts.PautaPrecioManager">
+        <constructor-arg ref="daoPautaPrecio"/>
+    </bean>
+    <bean id="managerProductoPrecio" class="com.autentia.intra.manager.contacts.ProductoPrecioManager">
+        <constructor-arg ref="daoProductoPrecio"/>
+    </bean>
+    <bean id="managerPautaEnsayo" class="com.autentia.intra.manager.contacts.PautaEnsayoManager">
+        <constructor-arg ref="daoPautaEnsayo"/>
+    </bean>
+    <bean id="managerParametroString" class="com.autentia.intra.manager.contacts.ParametroStringManager">
+        <constructor-arg ref="daoParametroString"/>
+    </bean>
+    <bean id="managerProjectEnsayoRequerimiento"
+          class="com.autentia.intra.manager.admin.ProjectEnsayoRequerimientoManager">
+        <constructor-arg ref="daoProjectEnsayoRequerimiento"/>
+    </bean>
+    <bean id="managerNotaSalida" class="com.autentia.intra.manager.contacts.NotaSalidaManager">
+        <constructor-arg ref="daoNotaSalida"/>
+    </bean>
+    <!-- TODO: instantiate managerReport
+    <bean id="managerReport" class="com.autentia.intra.manager.report.ReportManager" />
+    -->
+
+</beans>

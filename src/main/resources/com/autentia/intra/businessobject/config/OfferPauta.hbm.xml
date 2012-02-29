@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.OfferPauta" table="OfferPauta">
+        <id name="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+
+        <many-to-one name="pauta" class="com.autentia.intra.businessobject.Pauta" column="pautaId" not-null="true"/>
+
+        <property name="unidades" type="java.lang.Integer" not-null="true"/>
+
+        <property name="cost" type="java.math.BigDecimal" not-null="true"/>
+
+        <property name="ownerId" type="java.lang.Integer"/>
+
+        <property name="departmentId" type="java.lang.Integer"/>
+
+        <property name="insertDate" type="java.util.Date"/>
+
+        <property name="updateDate" type="java.util.Date"/>
+
+        <many-to-one name="offer" class="com.autentia.intra.businessobject.Offer" column="offerId" not-null="true"
+                     insert="false" update="false"/>
+
+        <property name="updatedById" type="java.lang.Integer"/>
+    </class>
+</hibernate-mapping>

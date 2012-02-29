@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.Albaran" table="Albaran">
+        <id name="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+
+        <property name="name" type="java.lang.String" not-null="true" unique="true"/>
+
+        <many-to-one name="client" class="com.autentia.intra.businessobject.Organization" not-null="true"/>
+
+        <property name="fecha" type="java.util.Date" not-null="true"/>
+
+        <property name="devuelto" type="java.lang.Boolean"/>
+
+        <set name="projects" table="Project" cascade="save-update,merge,persist,refresh" inverse="true">
+            <key column="albaranId"/>
+            <one-to-many class="com.autentia.intra.businessobject.Project"/>
+        </set>
+
+        <property name="ownerId" type="java.lang.Integer"/>
+
+        <property name="departmentId" type="java.lang.Integer"/>
+
+        <property name="insertDate" type="java.util.Date"/>
+
+        <property name="updateDate" type="java.util.Date"/>
+
+        <property name="updatedById" type="java.lang.Integer"/>
+
+        <many-to-one name="bill" column="billId" class="com.autentia.intra.businessobject.Bill"/>
+        <property name="observaciones" type="java.lang.String"/>
+    </class>
+</hibernate-mapping>

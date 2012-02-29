@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="boleto_dimensional_lab"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="535"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="0"
+		 rightMargin="0"
+		 topMargin="0"
+		 bottomMargin="0"
+		 whenNoDataType="AllSectionsNoDetail"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false"
+		 isIgnorePagination="true">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+	<import value="com.autentia.intra.util.ConfigurationUtil" />
+
+	<parameter name="projectId" isForPrompting="true" class="java.lang.Integer"/>
+	<queryString><![CDATA[select pe.*,
+e.name as eName,
+e.nameIngles as eNameIngles
+from ProjectEnsayo pe
+join Ensayo e
+on(e.id=pe.ensayoId)
+where pe.projectId = $P{projectId}
+and e.dimensional is true]]></queryString>
+
+	<field name="aprobadoFecha" class="java.sql.Timestamp"/>
+	<field name="aprobadoPor" class="java.lang.Integer"/>
+	<field name="conformidad" class="java.lang.String"/>
+	<field name="cost" class="java.math.BigDecimal"/>
+	<field name="departmentId" class="java.lang.Long"/>
+	<field name="eName" class="java.lang.String"/>
+	<field name="eNameIngles" class="java.lang.String"/>
+	<field name="ensayoId" class="java.lang.Integer"/>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="identificacionCliente" class="java.lang.String"/>
+	<field name="identificacionLab" class="java.lang.String"/>
+	<field name="insertDate" class="java.sql.Timestamp"/>
+	<field name="listindex" class="java.lang.Integer"/>
+	<field name="observaciones" class="java.lang.String"/>
+	<field name="ownerId" class="java.lang.Integer"/>
+	<field name="photo" class="java.lang.String"/>
+	<field name="plantilla" class="java.lang.String"/>
+	<field name="plantillaDim" class="java.lang.String"/>
+	<field name="plantillaLab" class="java.lang.String"/>
+	<field name="plantillaReq" class="java.lang.String"/>
+	<field name="plantillaTit" class="java.lang.String"/>
+	<field name="procedimiento" class="java.lang.String"/>
+	<field name="projectId" class="java.lang.Integer"/>
+	<field name="realizadoFecha" class="java.sql.Timestamp"/>
+	<field name="realizadoPor" class="java.lang.Integer"/>
+	<field name="requerimiento" class="java.lang.String"/>
+	<field name="revisadoFecha" class="java.sql.Timestamp"/>
+	<field name="revisadoPor" class="java.lang.Integer"/>
+	<field name="updateDate" class="java.sql.Timestamp"/>
+	<field name="updatedById" class="java.lang.Integer"/>
+	<field name="valor" class="java.lang.String"/>
+
+	<sortField name="listindex" />
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="49"  isSplitAllowed="true" >
+				<subreport  isUsingCache="false">
+					<reportElement
+						x="0"
+						y="25"
+						width="535"
+						height="18"
+						key="subreport-3"
+						positionType="Float"
+						isRemoveLineWhenBlank="true"
+						isPrintWhenDetailOverflows="true"/>
+					<subreportParameter  name="projectEnsayoId">
+						<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[com.autentia.intra.servlet.ReportServlet.subreport("document/", "lab_ensayo_params_boleto")]]></subreportExpression>
+				</subreport>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="31"
+						y="12"
+						width="473"
+						height="8"
+						key="textField-1"
+						positionType="Float"
+						isRemoveLineWhenBlank="true"
+						isPrintWhenDetailOverflows="true"/>
+					<box rightPadding="21"></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="arial.ttf" size="6" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="true" isStrikeThrough="false" />
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["s/ " + $F{procedimiento}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="31"
+						y="0"
+						width="473"
+						height="12"
+						key="textField-2"
+						positionType="Float"
+						isRemoveLineWhenBlank="true"
+						isPrintWhenDetailOverflows="true"/>
+					<box leftPadding="4" rightPadding="21"></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="arialbd.ttf" size="7" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="true" isStrikeThrough="false" />
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{eName} + " / " + $F{eNameIngles}]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

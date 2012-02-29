@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+			targetNamespace="http://www.autentia.com/TNTConcept" 
+			xmlns:tns="http://www.autentia.com/TNTConcept">
+	
+	<xsd:simpleType name="privilegeDomain">
+		  <xsd:restriction base="xsd:string">
+		    <xsd:pattern value="(all|area|own|deny)"/>
+		  </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:element name="securityConfiguration">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="entities" minOccurs="1" maxOccurs="1" >
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="entity" minOccurs="1" maxOccurs="unbounded" >
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="operation" type="tns:Operation" minOccurs="1" maxOccurs="unbounded"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute	name="name"  type="xsd:string"   use="required"/>
+					</xsd:complexType>					
+				</xsd:element>
+				
+				<xsd:element name="actions" minOccurs="1" maxOccurs="1" >
+					<xsd:complexType>
+						<xsd:sequence>				
+							<xsd:element name="action" type="tns:Action"  minOccurs="1" maxOccurs="unbounded"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+ 	
+    <xsd:complexType name="Operation">
+	   <xsd:attribute name="name"  type="tns:privilegeDomain" use="required"/>
+	   <xsd:attribute name="admin" type="tns:privilegeDomain" use="optional" default="deny"/>
+	   <xsd:attribute name="super" type="tns:privilegeDomain" use="optional" default="deny"/>
+	   <xsd:attribute name="staff" type="tns:privilegeDomain" use="optional" default="deny"/>
+	   <xsd:attribute name="user"  type="tns:privilegeDomain" use="optional" default="deny"/>
+	   <xsd:attribute name="cli"   type="tns:privilegeDomain" use="optional" default="deny"/>
+    </xsd:complexType>
+    
+    <xsd:complexType name="Action">
+	   <xsd:attribute name="name"  type="xsd:boolean" use="required"/>
+	   <xsd:attribute name="admin" type="xsd:boolean" use="optional" default="false"/>
+	   <xsd:attribute name="super" type="xsd:boolean" use="optional" default="false"/>
+	   <xsd:attribute name="staff" type="xsd:boolean" use="optional" default="false"/>
+	   <xsd:attribute name="user"  type="xsd:boolean" use="optional" default="false"/>
+	   <xsd:attribute name="cli"   type="xsd:boolean" use="optional" default="false"/>
+    </xsd:complexType>    
+</xsd:schema>

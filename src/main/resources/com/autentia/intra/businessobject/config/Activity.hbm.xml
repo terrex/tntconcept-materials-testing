@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.Activity" table="Activity">
+        <id name="id" unsaved-value="null" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="startDate" type="java.util.Date"/>
+        <property name="duration" type="int"/>
+        <property name="description" type="java.lang.String"/>
+        <property name="billable" type="boolean"/>
+        <many-to-one name="user" class="com.autentia.intra.businessobject.User" column="userId" not-null="true"/>
+        <many-to-one name="role" class="com.autentia.intra.businessobject.ProjectRole" column="roleId"/>
+        <many-to-one name="ensayo" class="com.autentia.intra.businessobject.ProjectEnsayo" column="projectEnsayoId"/>
+        <many-to-one name="project" class="com.autentia.intra.businessobject.Project" column="projectId"/>
+
+        <property name="departmentId" type="java.lang.Integer" column="departmentId"/>
+        <property name="insertDate" type="java.util.Date" column="insertDate"/>
+        <property name="updateDate" type="java.util.Date" column="updateDate"/>
+        <property name="updatedById" type="java.lang.Integer"/>
+    </class>
+</hibernate-mapping>

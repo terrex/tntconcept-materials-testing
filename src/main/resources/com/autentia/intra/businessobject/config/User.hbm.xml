@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.autentia.intra.businessobject.User" table="User">
+        <id name="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="active" type="boolean"/>
+        <property name="login" type="java.lang.String"/>
+        <property name="cargo" type="java.lang.String"/>
+        <many-to-one name="organization" class="com.autentia.intra.businessobject.Organization"
+                     column="organizationId" not-null="true"/>
+        <property name="password" type="java.lang.String"/>
+        <many-to-one name="role" class="com.autentia.intra.businessobject.Role" column="roleId" not-null="true"
+                />
+
+        <property name="name" type="java.lang.String"/>
+        <property name="startDate" type="java.util.Date"/>
+        <property name="nif" type="java.lang.String"/>
+        <property name="genre">
+            <type name="com.autentia.intra.util.GenericEnumUserType">
+                <param name="enumClassName">com.autentia.intra.businessobject.UserGenre</param>
+            </type>
+        </property>
+
+        <many-to-one name="category" class="com.autentia.intra.businessobject.UserCategory" column="categoryId"
+                     not-null="true"/>
+        <property name="socialSecurityNumber" type="java.lang.String"/>
+        <property name="workingInClient" type="boolean"/>
+
+        <property name="birthDate" type="java.util.Date"/>
+        <property name="married" type="boolean"/>
+        <property name="childrenNumber" type="int"/>
+        <property name="travelAvailability" type="java.lang.String"/>
+
+        <property name="academicQualification" type="java.lang.String"/>
+
+        <property name="email" type="java.lang.String"/>
+        <property name="phone" type="java.lang.String"/>
+        <property name="mobile" type="java.lang.String"/>
+        <property name="street" type="java.lang.String"/>
+        <property name="postalCode" type="java.lang.String"/>
+        <property name="city" type="java.lang.String"/>
+        <many-to-one name="province" class="com.autentia.intra.businessobject.Province" column="provinceId"/>
+
+        <property name="bank" type="java.lang.String"/>
+        <property name="account" type="java.lang.String"/>
+        <property name="salary" type="java.math.BigDecimal"/>
+        <property name="salaryExtras" type="java.math.BigDecimal"/>
+
+        <property name="drivenLicenseType" type="java.lang.String"/>
+        <property name="vehicleType" type="java.lang.String"/>
+        <property name="licensePlate" type="java.lang.String"/>
+
+        <many-to-one name="documentCategory" class="com.autentia.intra.businessobject.DocumentCategory"
+                     column="documentCategoryId" cascade="save-update"/>
+        <property name="securityCard" type="java.lang.String"/>
+        <property name="healthInsurance" type="java.lang.String"/>
+        <property name="notes" type="java.lang.String"/>
+
+        <property name="photo" type="java.lang.String"/>
+        <property name="endTestPeriodDate" type="java.util.Date"/>
+        <property name="endContractDate" type="java.util.Date"/>
+        <many-to-one name="department" class="com.autentia.intra.businessobject.Department" column="departmentId"
+                     not-null="true"/>
+        <many-to-one name="contractType" class="com.autentia.intra.businessobject.ContractType"
+                     column="contractTypeId"/>
+        <property name="dayDuration" type="int"/>
+
+        <many-to-one name="agreement" class="com.autentia.intra.businessobject.WorkingAgreement" column="agreementId"
+                     not-null="true"/>
+
+        <property name="contractObservations" type="java.lang.String"/>
+        <property name="insertDate" type="java.util.Date" column="insertDate"/>
+        <property name="updateDate" type="java.util.Date" column="updateDate"/>
+        <property name="updatedById" type="java.lang.Integer"/>
+    </class>
+</hibernate-mapping>
